@@ -25,14 +25,13 @@ function M.install_server(lang)
     error("could not create directory " .. lang)
   end
 
-  local onExit = function(_, code)
+  local function onExit(_, code)
     if code ~= 0 then
       error("Could not install " .. lang .. " language server!")
     end
     print("Successfully installed " .. lang .. " language server!")
     if M.post_install_hook then M.post_install_hook() end
   end
-
 
   vim.cmd("new")
   vim.fn.termopen("set -e\n" .. servers[lang].install_script, {["cwd"] = path, ["on_exit"] = onExit})
@@ -56,7 +55,7 @@ function M.uninstall_server(lang)
     return
   end
 
-  local onExit = function(_, code)
+  local function onExit(_, code)
     if code ~= 0 then
       error("Could not uninstall " .. lang .. " language server!")
     end

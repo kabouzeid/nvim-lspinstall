@@ -1,7 +1,5 @@
 # 🪄 nvim-lspinstall
 
-
-## About
 This is a very lightweight companion plugin for [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig).
 It adds the missing `:LspInstall <language>` command to conveniently install language servers.
 The language servers are installed *locally* into `stdpath("data")`, you can use `:echo stdpath("data")` to find out which directory that is on your machine.
@@ -14,7 +12,6 @@ Via [Vim-Plug](https://github.com/junegunn/vim-plug)
 Plug 'neovim/nvim-lspconfig'
 Plug 'kabouzeid/nvim-lspinstall'
 ```
-
 For a very basic setup use something like the following in your lua config.
 ```lua
 require'lspinstall'.setup() -- important
@@ -25,12 +22,10 @@ for _, server in pairs(servers) do
 end
 ```
 
-
 ## Usage
 * `:LspInstall <language>` to install/update the language server for `<language>` (e.g. `:LspInstall python`).
 * `:LspUninstall <language>` to uninstall the language server for `<language>`.
 * `require'lspinstall'.setup()` to make configs of installed servers available for `require'lspconfig'.<server>.setup{}`.
-
 
 
 ## Advanced Setup (recommended)
@@ -54,7 +49,6 @@ require'lspinstall'.post_install_hook = function ()
   vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
 end
 ```
-
 
 ## Bundled Installers
 
@@ -107,6 +101,7 @@ require'lspinstall/servers'.bash = vim.tbl_extend('error', config, {
 ```
 
 Do this before you call `require'lspinstall'.setup()`.
+
 
 ## Lua API
 
