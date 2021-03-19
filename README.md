@@ -89,7 +89,7 @@ Here `config` is a LSP config for [nvim-lspconfig](https://github.com/neovim/nvi
 
 The following example provides an installer for `bash-language-server`.
 ```lua
--- 1. get the config for this server from lspconfig and adjust the cmd path.
+-- 1. get the config for this server from nvim-lspconfig and adjust the cmd path.
 --    relative paths are allowed, lspinstall automatically adjusts the cmd and cmd_cwd for us!
 local config = require'lspconfig'.bashls.document_config
 require'lspconfig/configs'.bashls = nil -- important, unset the loaded config again
