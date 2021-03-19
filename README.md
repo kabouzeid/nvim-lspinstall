@@ -39,7 +39,7 @@ A configuration like this automatically reloads the installed servers after inst
 
 ```lua
 local function setup_servers()
-  require'lspinstall'.setup() -- sets require'lspconfig'.[server] for all installed servers
+  require'lspinstall'.setup()
   local servers = require'lspinstall'.installed_servers()
   for _, server in pairs(servers) do
     require'lspconfig'[server].setup{}
