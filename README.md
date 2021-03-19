@@ -1,4 +1,4 @@
-# nvim-lspinstall
+# 🪄 nvim-lspinstall
 
 
 ## About
