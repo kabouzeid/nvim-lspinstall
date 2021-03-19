@@ -29,8 +29,8 @@ end
 ## Usage
 * `:LspInstall <language>` to install/update the language server for `<language>` (e.g. `:LspInstall python`).
 * `:LspUninstall <language>` to uninstall the language server for `<language>`.
-* `require'lspinstall/servers'.<server_name> = config` to register an installer; where `config` is any LSP config for [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig), with an additional `lspinstall = { install_script = "...", uninstall_script = "..."}` key (see [Custom Installer](#custom-installer) for an example).
-* `require'lspinstall'.setup()` to make configs of installed servers in `require'lspinstall/servers'` available in `require'lspconfig'.<server>.setup{}`.
+* `require'lspinstall'.setup()` to make configs of installed servers available for `require'lspconfig'.<server>.setup{}`.
+
 
 
 ## Advanced Setup (recommended)
@@ -84,26 +84,25 @@ Note: css, json and html language servers are pulled directly from the latest VS
 
 ## Custom Installer
 
-Several language server installers are built into `nvim-lspinstall` and already registered in `require'lspinstall/servers'` (see `lua/lspinstall/servers/`).
-Adding a missing installer is as simple as providing a shell script to install (and optionally uninstall) the language server.
+Use `require'lspinstall/servers'.<lang> = config` to register a config with an installer.
+Here `config` is a LSP config for [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig), the only difference is that there are two additional keys `install_script` and `uninstall_script` which contain shell scripts to install/uninstall the language server.
 
 The following example provides an installer for `bash-language-server`.
 ```lua
--- 1. get the default_config for this server from lspconfig and adjust the cmd path.
---    relative paths are allowed, lspinstall automatically adjusts the cmd and cmd_cwd!
+-- 1. get the config for this server from lspconfig and adjust the cmd path.
+--    relative paths are allowed, lspinstall automatically adjusts the cmd and cmd_cwd for us!
 local config = require'lspconfig'.bashls.document_config
 require'lspconfig/configs'.bashls = nil -- important, unset the loaded config again
 config.default_config.cmd[1] = "./node_modules/.bin/bash-language-server"
 
--- 2. extend the config with an install and (optionally) uninstall script
+-- 2. extend the config with an install_script and (optionally) uninstall_script
 require'lspinstall/servers'.bash = vim.tbl_extend('error', config, {
-  -- `install` and `uninstall` should install/uninstall the server in the cwd
-  -- lspinstall will create an install directory for every server
+  -- lspinstall will automatically create/delete the install directory for every server
   install_script = [[
   ! -f package.json && npm init -y --scope=lspinstall || true
   npm install bash-language-server@latest
   ]],
-  uninstall_script = nil -- the install directory will be deleted automatically, nothing else todo here
+  uninstall_script = nil -- can be omitted
 })
 ```
 
@@ -121,4 +120,4 @@ Do this before you call `require'lspinstall'.setup()`.
 * `require'lspinstall'.uninstall_server(<lang>)`
 * `require'lspinstall'.post_uninstall_hook`
 
-`require'lspinstall/servers'`
+* `require'lspinstall/servers'`
