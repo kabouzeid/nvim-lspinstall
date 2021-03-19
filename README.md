@@ -17,7 +17,7 @@ Plug 'kabouzeid/nvim-lspinstall'
 
 For a very basic setup use something like the following in your lua config.
 ```lua
-require'lspinstall'.setup() -- required, sets require'lspconfig'.[server] for all installed servers
+require'lspinstall'.setup() -- important
 
 local servers = require'lspinstall'.installed_servers()
 for _, server in pairs(servers) do
