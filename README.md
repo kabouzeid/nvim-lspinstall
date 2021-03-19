@@ -2,7 +2,7 @@
 
 
 ## About
-`nvim-lspinstall` is a very lightweight companion plugin for [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig).
+This is a very lightweight companion plugin for [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig).
 It adds the missing `:LspInstall <language>` command to conveniently install language servers.
 The language servers are installed *locally* into `stdpath("data")`, you can use `:echo stdpath("data")` to find out which directory that is on your machine.
 
@@ -15,7 +15,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'kabouzeid/nvim-lspinstall'
 ```
 
-For a very basic setup use something like the following lua code.
+For a very basic setup use something like the following in your lua config.
 ```lua
 require'lspinstall'.setup() -- required, sets require'lspconfig'.[server] for all installed servers
 
@@ -27,14 +27,10 @@ end
 
 
 ## Usage
-`:LspInstall <language>` to install/update the language server for `<language>` (e.g. `:LspInstall python`).
-
-`:LspUninstall <language>` to uninstall the language server for `<language>`.
-
-`require'lspinstall/servers'.<server_name> = config` to register an installer; where `config` is any LSP config for [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig), with an additional `lspinstall = { install_script = "...", uninstall_script = "..."}` key (see [Custom Installer](#custom-installer) for an example).
-
-`require'lspinstall'.setup()` to make configs of installed servers in `require'lspinstall/servers'` available in `require'lspconfig'.<server>.setup{}`.
-
+* `:LspInstall <language>` to install/update the language server for `<language>` (e.g. `:LspInstall python`).
+* `:LspUninstall <language>` to uninstall the language server for `<language>`.
+* `require'lspinstall/servers'.<server_name> = config` to register an installer; where `config` is any LSP config for [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig), with an additional `lspinstall = { install_script = "...", uninstall_script = "..."}` key (see [Custom Installer](#custom-installer) for an example).
+* `require'lspinstall'.setup()` to make configs of installed servers in `require'lspinstall/servers'` available in `require'lspconfig'.<server>.setup{}`.
 
 
 ## Advanced Setup (recommended)
@@ -61,8 +57,6 @@ end
 
 
 ## Bundled Installers
-
-Currently `nvim-lspinstall` ships with installers for the following languages
 
 | Language    | Language Server                                                             |
 |-------------|-----------------------------------------------------------------------------|
@@ -97,12 +91,12 @@ The following example provides an installer for `bash-language-server`.
 ```lua
 -- 1. get the default_config for this server from lspconfig and adjust the cmd path.
 --    relative paths are allowed, lspinstall automatically adjusts the cmd and cmd_cwd!
-local default_config = require'lspconfig'.bashls.document_config.default_config
+local config = require'lspconfig'.bashls.document_config
 require'lspconfig/configs'.bashls = nil -- important, unset the loaded config again
-default_config.cmd[1] = "./node_modules/.bin/bash-language-server"
+config.default_config.cmd[1] = "./node_modules/.bin/bash-language-server"
 
 -- 2. extend the config with an install and (optionally) uninstall script
-require'lspinstall/servers'.bash = vim.tbl_extend('error', default_config, {
+require'lspinstall/servers'.bash = vim.tbl_extend('error', config, {
   -- `install` and `uninstall` should install/uninstall the server in the cwd
   -- lspinstall will create an install directory for every server
   install_script = [[
@@ -111,21 +105,20 @@ require'lspinstall/servers'.bash = vim.tbl_extend('error', default_config, {
   ]],
   uninstall_script = nil -- the install directory will be deleted automatically, nothing else todo here
 })
-
-require'lspinstall'.setup()
 ```
 
+Do this before you call `require'lspinstall'.setup()`.
 
 ## Lua API
 
-`require'lspinstall'.setup()`
+* `require'lspinstall'.setup()`
 
-`require'lspinstall'.installed_servers()`
+* `require'lspinstall'.installed_servers()`
 
-`require'lspinstall'.install_server(<lang>)`
-`require'lspinstall'.post_install_hook`
+* `require'lspinstall'.install_server(<lang>)`
+* `require'lspinstall'.post_install_hook`
 
-`require'lspinstall'.uninstall_server(<lang>)`
-`require'lspinstall'.post_uninstall_hook`
+* `require'lspinstall'.uninstall_server(<lang>)`
+* `require'lspinstall'.post_uninstall_hook`
 
 `require'lspinstall/servers'`
