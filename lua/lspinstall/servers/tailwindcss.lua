@@ -1,5 +1,5 @@
 return {
-  install = [[
+  install_script = [[
   wget -O tailwindcss-intellisense.vsix $(curl -s https://api.github.com/repos/tailwindlabs/tailwindcss-intellisense/releases/latest | grep 'browser_' | cut -d\" -f4)
   unzip -o tailwindcss-intellisense.vsix -d tailwindcss-intellisense
   rm tailwindcss-intellisense.vsix

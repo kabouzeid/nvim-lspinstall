@@ -3,7 +3,7 @@ require'lspconfig/configs'.intelephense = nil -- important, immediately unset th
 config.default_config.cmd[1] = "./node_modules/.bin/intelephense"
 
 return vim.tbl_extend('error', config, {
-  install = [[
+  install_script = [[
   ! -f package.json && npm init -y --scope=lspinstall || true
   npm install intelephense@latest
   ]]

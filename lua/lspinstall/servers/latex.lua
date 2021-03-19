@@ -3,7 +3,7 @@ require'lspconfig/configs'.texlab = nil -- important, immediately unset the load
 config.default_config.cmd[1] = "./texlab"
 
 return vim.tbl_extend('error', config, {
-  install = [[
+  install_script = [[
   os=$(uname -s | tr "[:upper:]" "[:lower:]")
 
   case $os in

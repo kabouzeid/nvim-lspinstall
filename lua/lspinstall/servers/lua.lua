@@ -3,7 +3,7 @@ require'lspconfig/configs'.sumneko_lua = nil -- important, immediately unset the
 config.default_config.cmd = { "./sumneko-lua-language-server" }
 
 return vim.tbl_extend('error', config, {
-  install = [[
+  install_script = [[
   os=$(uname -s | tr "[:upper:]" "[:lower:]")
 
   case $os in

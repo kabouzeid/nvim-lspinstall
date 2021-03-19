@@ -1,5 +1,5 @@
 return {
-  install = [[
+  install_script = [[
   wget -O vscode.tar.gz https://update.code.visualstudio.com/latest/linux-x64/stable
   rm -rf vscode
   mkdir vscode
