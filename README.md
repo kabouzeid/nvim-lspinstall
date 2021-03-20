@@ -12,7 +12,7 @@ Via [Vim-Plug](https://github.com/junegunn/vim-plug)
 Plug 'neovim/nvim-lspconfig'
 Plug 'kabouzeid/nvim-lspinstall'
 ```
-For a very basic setup use something like the following in your lua config.
+The following is a good starting point to integrate with [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig).
 ```lua
 require'lspinstall'.setup() -- important
 
@@ -21,6 +21,8 @@ for _, server in pairs(servers) do
   require'lspconfig'[server].setup{}
 end
 ```
+For a complete example you might refer to my personal configuration in the [Wiki](https://github.com/kabouzeid/nvim-lspinstall/wiki).
+
 
 ## Usage
 * `:LspInstall <language>` to install/update the language server for `<language>` (e.g. `:LspInstall python`).
@@ -28,7 +30,7 @@ end
 * `require'lspinstall'.setup()` to make configs of installed servers available for `require'lspconfig'.<server>.setup{}`.
 
 
-## Advanced Setup (recommended)
+## Advanced Configuration (recommended)
 
 A configuration like this automatically reloads the installed servers after installing a language server via `:LspInstall` such that we don't have to restart neovim.
 
