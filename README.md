@@ -66,6 +66,7 @@ end
 | php         | intelephense                                                                |
 | python      | pyright-langserver                                                          |
 | rome        | rome                                                                        |
+| ruby        | solargraph                                                                  |
 | svelte      | svelte-language-server                                                      |
 | tailwindcss | tailwindcss-intellisense (pulled directly from the latest VSCode extension) |
 | typescript  | typescript-language-server                                                  |

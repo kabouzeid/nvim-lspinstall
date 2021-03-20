@@ -11,6 +11,7 @@ local servers = {
   ["php"] = require'lspinstall/servers/php',
   ["python"] = require'lspinstall/servers/python',
   ["rome"] = require'lspinstall/servers/rome',
+  ["ruby"] = require'lspinstall/servers/ruby',
   ["svelte"] = require'lspinstall/servers/svelte',
   ["tailwindcss"] = require'lspinstall/servers/tailwindcss',
   ["typescript"] = require'lspinstall/servers/typescript',
