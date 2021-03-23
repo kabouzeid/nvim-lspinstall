@@ -69,6 +69,7 @@ end
 | python      | pyright-langserver                                                          |
 | rome        | rome                                                                        |
 | ruby        | solargraph                                                                  |
+| rust        | rust-analyzer                                                               |
 | svelte      | svelte-language-server                                                      |
 | tailwindcss | tailwindcss-intellisense (pulled directly from the latest VSCode extension) |
 | typescript  | typescript-language-server                                                  |
