@@ -47,7 +47,7 @@ function M.uninstall_server(lang)
 
   local path = install_path(lang)
 
-  if os.execute("test -d " .. path) ~= 0 then
+  if tonumber(io.popen("test -d " .. path .. " \necho $?"):read("*all")) ~= 0 then
     error("server is not installed")
   end
 
@@ -59,7 +59,7 @@ function M.uninstall_server(lang)
     if code ~= 0 then
       error("Could not uninstall " .. lang .. " language server!")
     end
-    if os.execute("rm -rf " .. path) ~= 0 then
+    if tonumber(io.popen("rm -rf " .. path .. " \necho $?"):read("*all")) ~= 0 then
       error("could not delete directory " .. lang)
     end
     print("Successfully uninstalled " .. lang .. " language server!")
@@ -74,7 +74,7 @@ end
 -- UTILITY
 
 function M.is_server_installed(lang)
-  return os.execute("test -d " .. install_path(lang)) == 0
+  return tonumber(io.popen("mkdir -p " .. .. install_path(lang) .. " \necho $?"):read("*all")) == 0
 end
 
 function M.available_servers()
