@@ -21,7 +21,7 @@ function M.install_server(lang)
   end
 
   local path = install_path(lang)
-  if os.execute("mkdir -p " .. path) ~= 0 then
+  if tonumber(io.popen("mkdir -p " .. path .. " \necho $?"):read("*all")) ~= 0 then
     error("could not create directory " .. lang)
   end
 
