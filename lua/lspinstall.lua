@@ -74,7 +74,7 @@ end
 -- UTILITY
 
 function M.is_server_installed(lang)
-  return tonumber(io.popen("mkdir -p " .. .. install_path(lang) .. " \necho $?"):read("*all")) == 0
+  return tonumber(io.popen("mkdir -p " .. install_path(lang) .. " \necho $?"):read("*all")) == 0
 end
 
 function M.available_servers()
