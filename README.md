@@ -97,10 +97,10 @@ config.default_config.cmd[1] = "./node_modules/.bin/bash-language-server"
 -- 2. extend the config with an install_script and (optionally) uninstall_script
 require'lspinstall/servers'.bash = vim.tbl_extend('error', config, {
   -- lspinstall will automatically create/delete the install directory for every server
-  install_script = [[
-  ! -f package.json && npm init -y --scope=lspinstall || true
+  install_script = [=[
+  [[ ! -f package.json ]] && npm init -y --scope=lspinstall || true
   npm install bash-language-server@latest
-  ]],
+  ]=],
   uninstall_script = nil -- can be omitted
 })
 ```
