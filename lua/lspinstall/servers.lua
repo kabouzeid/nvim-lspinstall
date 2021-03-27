@@ -1,7 +1,7 @@
 local servers = {
   ["bash"] = require'lspinstall/servers/bash',
   ["cmake"] = require'lspinstall/servers/cmake',
-  ["clangd"] = require'lspinstall/servers/clangd',
+  ["cpp"] = require'lspinstall/servers/cpp',
   ["css"] = require'lspinstall/servers/css',
   ["diagnosticls"] = require'lspinstall/servers/diagnosticls',
   ["dockerfile"] = require'lspinstall/servers/dockerfile',
