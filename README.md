@@ -107,6 +107,8 @@ require'lspinstall/servers'.bash = vim.tbl_extend('error', config, {
 
 Do this before you call `require'lspinstall'.setup()`.
 
+Note: **don't** replace the `/` with a `.` in the `require` calls above ([see here if you're interested why](https://github.com/kabouzeid/nvim-lspinstall/issues/14)).
+
 
 ## Lua API
 
