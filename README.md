@@ -57,6 +57,7 @@ end
 | Language    | Language Server                                                             |
 |-------------|-----------------------------------------------------------------------------|
 | bash        | bash-language-server                                                        |
+| cpp         | clangd                                                                      |
 | cmake       | cmake-language-server                                                       |
 | css         | css-language-features (pulled directly from the latest VSCode release)      |
 | dockerfile  | docker-langserver                                                           |
