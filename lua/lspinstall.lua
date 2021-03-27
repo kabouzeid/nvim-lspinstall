@@ -70,7 +70,10 @@ function M.uninstall_server(lang)
   end
 
   vim.cmd("new")
+  local shell = vim.o.shell
+  vim.o.shell = '/bin/bash'
   vim.fn.termopen("set -e\n" .. (servers[lang].uninstall_script or ""), {["cwd"] = path, ["on_exit"] = onExit})
+  vim.o.shell = shell
   vim.cmd("startinsert")
 end
 
