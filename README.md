@@ -62,6 +62,7 @@ end
 | css         | css-language-features (pulled directly from the latest VSCode release)      |
 | dockerfile  | docker-langserver                                                           |
 | go          | gopls                                                                       |
+| graphql     | GraphQL language service                                                    |
 | html        | html-language-features (pulled directly from the latest VSCode release)     |
 | json        | json-language-features (pulled directly from the latest VSCode release)     |
 | latex       | texlab                                                                      |
@@ -77,7 +78,6 @@ end
 | vim         | vim-language-server                                                         |
 | vue         | vls (vetur)                                                                 |
 | yaml        | yaml-language-server                                                        |
-| graphql     | graphql-language-service-cli                                                |
 | *           | efm, diagnosticls                                                           |
 
 Note: css, json and html language servers are pulled directly from the latest VSCode release, instead of using the outdated versions provided by e.g. `npm install vscode-html-languageserver-bin`.

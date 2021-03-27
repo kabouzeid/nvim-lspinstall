@@ -7,6 +7,7 @@ local servers = {
   ["dockerfile"] = require'lspinstall/servers/dockerfile',
   ["efm"] = require'lspinstall/servers/efm',
   ["go"] = require'lspinstall/servers/go',
+  ["graphql"] = require'lspinstall/servers/graphql',
   ["html"] = require'lspinstall/servers/html',
   ["json"] = require'lspinstall/servers/json',
   ["latex"] = require'lspinstall/servers/latex',
@@ -22,7 +23,6 @@ local servers = {
   ["vim"] = require'lspinstall/servers/vim',
   ["vue"] = require'lspinstall/servers/vue',
   ["yaml"] = require'lspinstall/servers/yaml',
-  ["graphql"] = require 'lspinstall/servers/graphql'
 }
 
 return servers
