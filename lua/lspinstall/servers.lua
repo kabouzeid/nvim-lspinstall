@@ -3,6 +3,7 @@ local servers = {
   ["cmake"] = require'lspinstall/servers/cmake',
   ["cpp"] = require'lspinstall/servers/cpp',
   ["css"] = require'lspinstall/servers/css',
+  ["deno"] = require'lspinstall/servers/deno',
   ["diagnosticls"] = require'lspinstall/servers/diagnosticls',
   ["dockerfile"] = require'lspinstall/servers/dockerfile',
   ["efm"] = require'lspinstall/servers/efm',

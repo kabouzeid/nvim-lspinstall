@@ -69,7 +69,6 @@ end
 | lua         | (sumneko) lua-language-server                                               |
 | php         | intelephense                                                                |
 | python      | pyright-langserver                                                          |
-| rome        | rome                                                                        |
 | ruby        | solargraph                                                                  |
 | rust        | rust-analyzer                                                               |
 | svelte      | svelte-language-server                                                      |
@@ -78,7 +77,13 @@ end
 | vim         | vim-language-server                                                         |
 | vue         | vls (vetur)                                                                 |
 | yaml        | yaml-language-server                                                        |
-| *           | efm, diagnosticls                                                           |
+
+| Name        | Description                                                                 |
+|-------------|-----------------------------------------------------------------------------|
+| deno        | alternative typescript language server                                      |
+| diagnosticls| general purpose                                                             |
+| efm         | general purpose                                                             |
+| rome        | web dev linter                                                              |
 
 Note: css, json and html language servers are pulled directly from the latest VSCode release, instead of using the outdated versions provided by e.g. `npm install vscode-html-languageserver-bin`.
 
