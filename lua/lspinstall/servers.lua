@@ -1,11 +1,13 @@
 local servers = {
   ["bash"] = require'lspinstall/servers/bash',
   ["cmake"] = require'lspinstall/servers/cmake',
+  ["cpp"] = require'lspinstall/servers/cpp',
   ["css"] = require'lspinstall/servers/css',
   ["diagnosticls"] = require'lspinstall/servers/diagnosticls',
   ["dockerfile"] = require'lspinstall/servers/dockerfile',
   ["efm"] = require'lspinstall/servers/efm',
   ["go"] = require'lspinstall/servers/go',
+  ["graphql"] = require'lspinstall/servers/graphql',
   ["html"] = require'lspinstall/servers/html',
   ["json"] = require'lspinstall/servers/json',
   ["latex"] = require'lspinstall/servers/latex',
