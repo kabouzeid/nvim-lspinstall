@@ -1,7 +1,10 @@
-# 🪄 nvim-lspinstall
+![logo](/logo.png)
+
+## About
 
 This is a very lightweight companion plugin for [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig).
 It adds the missing `:LspInstall <language>` command to conveniently install language servers.
+
 The language servers are installed *locally* into `stdpath("data")`, you can use `:echo stdpath("data")` to find out which directory that is on your machine.
 
 
