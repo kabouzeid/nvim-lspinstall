@@ -76,6 +76,7 @@ end
 | rust        | rust-analyzer                                                               |
 | svelte      | svelte-language-server                                                      |
 | tailwindcss | tailwindcss-intellisense (pulled directly from the latest VSCode extension) |
+| terraform   | Terraform Language Server (terraform-ls)                                    |
 | typescript  | typescript-language-server                                                  |
 | vim         | vim-language-server                                                         |
 | vue         | vls (vetur)                                                                 |
