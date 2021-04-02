@@ -83,10 +83,10 @@ end
 
 | Name        | Description                                                                 |
 |-------------|-----------------------------------------------------------------------------|
-| deno        | alternative typescript language server                                      |
-| diagnosticls| general purpose                                                             |
-| efm         | general purpose                                                             |
-| rome        | web dev linter                                                              |
+| deno        | https://deno.land/                                                          |
+| diagnosticls| https://github.com/iamcco/diagnostic-languageserver                         |
+| efm         | https://github.com/mattn/efm-langserver                                     |
+| rome        | https://rome.tools/                                                         |
 
 Note: css, json and html language servers are pulled directly from the latest VSCode release, instead of using the outdated versions provided by e.g. `npm install vscode-html-languageserver-bin`.
 
