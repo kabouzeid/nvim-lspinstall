@@ -20,6 +20,7 @@ local servers = {
   ["rust"] = require'lspinstall/servers/rust',
   ["svelte"] = require'lspinstall/servers/svelte',
   ["tailwindcss"] = require'lspinstall/servers/tailwindcss',
+  ["terraform"] = require'lspinstall/servers/terraform',
   ["typescript"] = require'lspinstall/servers/typescript',
   ["vim"] = require'lspinstall/servers/vim',
   ["vue"] = require'lspinstall/servers/vue',
