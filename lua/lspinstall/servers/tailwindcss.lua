@@ -1,3 +1,4 @@
+local util = require"lspconfig".util
 return {
   install_script = [[
   wget -O tailwindcss-intellisense.vsix $(curl -s https://api.github.com/repos/tailwindlabs/tailwindcss-intellisense/releases/latest | grep 'browser_' | cut -d\" -f4)
@@ -56,7 +57,13 @@ return {
       'vue',
       'svelte',
     },
-    root_dir = require"lspconfig".util.find_git_ancestor,
+    root_dir = function(fname)
+      return util.root_pattern('tailwind.config.js', 'tailwind.config.ts')(fname) or
+      util.root_pattern('postcss.config.js', 'postcss.config.ts')(fname) or
+      util.find_package_json_ancestor(fname) or
+      util.find_node_modules_ancestor(fname) or
+      util.find_git_ancestor(fname)
+      end,
     handlers = {
       ["tailwindcss/getConfiguration"] = function (_, _, params, _, bufnr, _)
         -- tailwindcss lang server waits for this repsonse before providing hover
