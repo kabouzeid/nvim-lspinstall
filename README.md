@@ -68,6 +68,7 @@ end
 | go          | gopls                                                                       |
 | graphql     | GraphQL language service                                                    |
 | html        | html-language-features (pulled directly from the latest VSCode release)     |
+| java        | Latest Eclipse JDTLS with Lombok support.                                   |
 | json        | json-language-features (pulled directly from the latest VSCode release)     |
 | latex       | texlab                                                                      |
 | lua         | (sumneko) lua-language-server                                               |

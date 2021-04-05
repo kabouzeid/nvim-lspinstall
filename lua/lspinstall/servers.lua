@@ -11,6 +11,7 @@ local servers = {
   ["go"] = require'lspinstall/servers/go',
   ["graphql"] = require'lspinstall/servers/graphql',
   ["html"] = require'lspinstall/servers/html',
+  ["java"] = require'lspinstall/servers/java',
   ["json"] = require'lspinstall/servers/json',
   ["latex"] = require'lspinstall/servers/latex',
   ["lua"] = require'lspinstall/servers/lua',
