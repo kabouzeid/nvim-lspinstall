@@ -1,4 +1,5 @@
 local servers = {
+  ["angular"] = require'lspinstall/servers/angular',
   ["bash"] = require'lspinstall/servers/bash',
   ["cmake"] = require'lspinstall/servers/cmake',
   ["cpp"] = require'lspinstall/servers/cpp',

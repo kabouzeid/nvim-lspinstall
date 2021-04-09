@@ -59,6 +59,7 @@ end
 
 | Language    | Language Server                                                             |
 |-------------|-----------------------------------------------------------------------------|
+| angular     | Angular Language Service                                                    |
 | bash        | bash-language-server                                                        |
 | cpp         | clangd                                                                      |
 | cmake       | cmake-language-server                                                       |
