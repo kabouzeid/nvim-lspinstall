@@ -15,7 +15,7 @@ return vim.tbl_extend('error', config, {
   ;;
   esac
 
-  wget -O sumneko-lua.vsix $(curl -s https://api.github.com/repos/sumneko/vscode-lua/releases/latest | grep 'browser_' | cut -d\" -f4)
+  curl -L -o sumneko-lua.vsix $(curl -s https://api.github.com/repos/sumneko/vscode-lua/releases/latest | grep 'browser_' | cut -d\" -f4)
   rm -rf sumneko-lua
   unzip sumneko-lua.vsix -d sumneko-lua
   rm sumneko-lua.vsix

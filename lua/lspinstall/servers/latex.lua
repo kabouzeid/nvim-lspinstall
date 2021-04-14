@@ -15,7 +15,7 @@ return vim.tbl_extend('error', config, {
   ;;
   esac
 
-  wget -O texlab.tar.gz $(curl -s https://api.github.com/repos/latex-lsp/texlab/releases/latest | grep 'browser_' | cut -d\" -f4 | grep "$platform")
+  curl -L -o texlab.tar.gz $(curl -s https://api.github.com/repos/latex-lsp/texlab/releases/latest | grep 'browser_' | cut -d\" -f4 | grep "$platform")
   tar -xzf texlab.tar.gz
   rm texlab.tar.gz
   ]]
