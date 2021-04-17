@@ -19,7 +19,7 @@ return {
       'django-html',
       'edge',
       'ejs',
-      'erb',
+      'eruby',
       'gohtml',
       'haml',
       'handlebars',
@@ -56,6 +56,11 @@ return {
       -- mixed
       'vue',
       'svelte',
+    },
+    init_options = {
+      userLanguages = {
+        eruby = "html"
+      }
     },
     root_dir = function(fname)
       return util.root_pattern('tailwind.config.js', 'tailwind.config.ts')(fname) or

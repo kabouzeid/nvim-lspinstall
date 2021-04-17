@@ -22,7 +22,7 @@ return {
       'django-html',
       'edge',
       'ejs',
-      'erb',
+      'eruby',
       'gohtml',
       'haml',
       'handlebars',
