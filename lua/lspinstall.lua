@@ -103,11 +103,13 @@ function M.setup()
           cmd_cwd = install_path(lang)
         }
       })
-      local executable = config.default_config.cmd[1]
-      if vim.regex([[^[.]\{1,2}\/]]):match_str(executable) then -- matches ./ and ../
-        -- prepend the install path if the executable is a relative path
-        -- we need this because for the executable cmd[1] itself, cwd is not considered!
-        config.default_config.cmd[1] = install_path(lang) .. "/" .. executable
+      local cmd = config.default_config.cmd
+      for i, val in ipairs(cmd) do
+        if vim.regex([[^[.]\{1,2}\/]]):match_str(val) then -- matches ./ and ../
+          -- prepend the install path if the executable is a relative path
+          -- we need this because for the executable cmd[1] itself, cwd is not considered!
+          config.default_config.cmd[i] = install_path(lang) .. "/" .. val
+        end
       end
       configs[lang] = config
     end
