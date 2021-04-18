@@ -80,7 +80,7 @@ end
 -- UTILITY
 
 function M.is_server_installed(lang)
-  return os.execute("test -d " .. install_path(lang)) == 0
+  return vim.fn.isdirectory(install_path(lang)) == 1
 end
 
 function M.available_servers()
