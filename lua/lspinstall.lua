@@ -21,9 +21,7 @@ function M.install_server(lang)
   end
 
   local path = install_path(lang)
-  if os.execute("mkdir -p " .. path) ~= 0 then
-    error("could not create directory " .. lang)
-  end
+  vim.fn.mkdir(path, "p") -- fail: throws
 
   local function onExit(_, code)
     if code ~= 0 then
@@ -50,7 +48,7 @@ function M.uninstall_server(lang)
 
   local path = install_path(lang)
 
-  if os.execute("test -d " .. path) ~= 0 then
+  if vim.fn.isdirectory(path) ~= 1 then -- 0: false, 1: true
     error("server is not installed")
   end
 
@@ -62,7 +60,7 @@ function M.uninstall_server(lang)
     if code ~= 0 then
       error("Could not uninstall " .. lang .. " language server!")
     end
-    if os.execute("rm -rf " .. path) ~= 0 then
+    if vim.fn.delete(path, "rf") ~= 0 then -- here 0: success, -1: fail
       error("could not delete directory " .. lang)
     end
     print("Successfully uninstalled " .. lang .. " language server!")
@@ -80,7 +78,7 @@ end
 -- UTILITY
 
 function M.is_server_installed(lang)
-  return vim.fn.isdirectory(install_path(lang)) == 1
+  return vim.fn.isdirectory(install_path(lang)) == 1 -- 0: false, 1: true
 end
 
 function M.available_servers()
