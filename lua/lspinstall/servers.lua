@@ -8,6 +8,7 @@ local servers = {
   ["diagnosticls"] = require'lspinstall/servers/diagnosticls',
   ["dockerfile"] = require'lspinstall/servers/dockerfile',
   ["efm"] = require'lspinstall/servers/efm',
+  ["elixir"] = require'lspinstall/servers/elixir',
   ["go"] = require'lspinstall/servers/go',
   ["graphql"] = require'lspinstall/servers/graphql',
   ["html"] = require'lspinstall/servers/html',
