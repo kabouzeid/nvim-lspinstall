@@ -64,6 +64,7 @@ end
 | cpp         | clangd                                                                      |
 | cmake       | cmake-language-server                                                       |
 | css         | css-language-features (pulled directly from the latest VSCode release)      |
+| elixir      | Elixir Language Server (elixir-ls)                                          |
 | dockerfile  | docker-langserver                                                           |
 | go          | gopls                                                                       |
 | graphql     | GraphQL language service                                                    |
