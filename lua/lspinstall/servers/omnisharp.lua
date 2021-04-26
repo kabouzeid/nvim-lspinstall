@@ -22,5 +22,6 @@ return vim.tbl_extend('error', config, {
   rm -rf omnisharp
   unzip omnisharp.zip
   rm omnisharp.zip
+  chmod +x run
   ]]
 })
