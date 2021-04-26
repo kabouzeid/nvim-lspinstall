@@ -70,9 +70,19 @@ return {
       util.find_git_ancestor(fname)
       end,
     handlers = {
-      ["tailwindcss/getConfiguration"] = function (_, _, params, _, bufnr, _)
-        -- tailwindcss lang server waits for this repsonse before providing hover
-        vim.lsp.buf_notify(bufnr, "tailwindcss/getConfigurationResponse", { _id = params._id })
+      -- 1. tailwindcss lang server uses this instead of workspace/configuration
+      -- 2. tailwindcss lang server waits for this repsonse before providing hover
+      ["tailwindcss/getConfiguration"] = function (err, _, params, client_id, bufnr, _)
+        -- params = { _id, languageId? }
+
+        local client = vim.lsp.get_client_by_id(client_id)
+        if not client then return end
+        if err then error(vim.inspect(err)) end
+
+        local configuration = vim.lsp.util.lookup_section(client.config.settings, "tailwindCSS")
+        configuration._id = params._id
+        configuration.tabSize = vim.lsp.util.get_effective_tabstop(bufnr) -- used for the CSS preview
+        vim.lsp.buf_notify(bufnr, "tailwindcss/getConfigurationResponse", configuration)
       end
     }
   }
