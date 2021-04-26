@@ -79,7 +79,7 @@ return {
         if not client then return end
         if err then error(vim.inspect(err)) end
 
-        local configuration = vim.lsp.util.lookup_section(client.config.settings, "tailwindCSS")
+        local configuration = vim.lsp.util.lookup_section(client.config.settings, "tailwindCSS") or {}
         configuration._id = params._id
         configuration.tabSize = vim.lsp.util.get_effective_tabstop(bufnr) -- used for the CSS preview
         vim.lsp.buf_notify(bufnr, "tailwindcss/getConfigurationResponse", configuration)
