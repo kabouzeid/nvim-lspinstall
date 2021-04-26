@@ -1,6 +1,5 @@
 local config = require'lspconfig'.omnisharp.document_config
 require'lspconfig/configs'.omnisharp = nil -- important, immediately unset the loaded config again
-local configs = require 'lspconfig/configs'
 
 local pid = vim.fn.getpid()
 config.default_config.cmd = { "./run", "--languageserver" , "--hostPID", tostring(pid) }
