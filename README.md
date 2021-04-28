@@ -61,8 +61,9 @@ end
 |-------------|-----------------------------------------------------------------------------|
 | angular     | Angular Language Service                                                    |
 | bash        | bash-language-server                                                        |
-| cpp         | clangd                                                                      |
 | cmake       | cmake-language-server                                                       |
+| cpp         | clangd                                                                      |
+| csharp      | OmniSharp                                                                   |
 | css         | css-language-features (pulled directly from the latest VSCode release)      |
 | dockerfile  | docker-langserver                                                           |
 | elixir      | Elixir Language Server (elixir-ls)                                          |

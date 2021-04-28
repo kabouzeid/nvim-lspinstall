@@ -3,6 +3,7 @@ local servers = {
   ["bash"] = require'lspinstall/servers/bash',
   ["cmake"] = require'lspinstall/servers/cmake',
   ["cpp"] = require'lspinstall/servers/cpp',
+  ["csharp"] = require'lspinstall/servers/csharp',
   ["css"] = require'lspinstall/servers/css',
   ["deno"] = require'lspinstall/servers/deno',
   ["diagnosticls"] = require'lspinstall/servers/diagnosticls',
@@ -27,7 +28,6 @@ local servers = {
   ["vim"] = require'lspinstall/servers/vim',
   ["vue"] = require'lspinstall/servers/vue',
   ["yaml"] = require'lspinstall/servers/yaml',
-  ["csharp"] = require'lspinstall/servers/csharp',
 }
 
 return servers
