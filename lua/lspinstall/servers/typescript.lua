@@ -1,5 +1,4 @@
-local config = require'lspconfig'.tsserver.document_config
-require'lspconfig/configs'.tsserver = nil -- important, immediately unset the loaded config again
+local config = require"lspinstall/util".extract_config("tsserver")
 config.default_config.cmd[1] = "./node_modules/.bin/typescript-language-server"
 
 return vim.tbl_extend('error', config, {

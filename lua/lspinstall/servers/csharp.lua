@@ -1,8 +1,5 @@
-local config = require'lspconfig'.omnisharp.document_config
-require'lspconfig/configs'.omnisharp = nil -- important, immediately unset the loaded config again
-
+local config = require"lspinstall/util".extract_config("omnisharp")
 config.default_config.cmd = { "./run", "--languageserver" , "--hostPID", tostring(vim.fn.getpid()) }
-
 
 return vim.tbl_extend('error', config, {
   install_script = [[

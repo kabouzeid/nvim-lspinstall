@@ -1,5 +1,4 @@
-local config = require'lspconfig'.elixirls.document_config
-require'lspconfig/configs'.elixirls = nil -- important, immediately unset the loaded config again
+local config = require"lspinstall/util".extract_config("elixirls")
 config.default_config.cmd = { "./elixir-ls/language_server.sh" }
 
 return vim.tbl_extend('error', config, {

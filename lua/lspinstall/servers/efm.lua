@@ -1,5 +1,4 @@
-local config = require'lspconfig'.efm.document_config
-require'lspconfig/configs'.efm = nil -- important, immediately unset the loaded config again
+local config = require"lspinstall/util".extract_config("efm")
 config.default_config.cmd[1] = "./efm-langserver"
 
 return vim.tbl_extend('error', config, {

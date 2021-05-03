@@ -1,5 +1,4 @@
-local config = require'lspconfig'.solargraph.document_config
-require'lspconfig/configs'.solargraph = nil -- important, immediately unset the loaded config again
+local config = require"lspinstall/util".extract_config("solargraph")
 config.default_config.cmd[1] = "./solargraph/solargraph"
 
 return vim.tbl_extend('error', config, {

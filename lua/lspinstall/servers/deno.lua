@@ -1,5 +1,4 @@
-local config = require'lspconfig'.denols.document_config
-require'lspconfig/configs'.denols = nil -- important, immediately unset the loaded config again
+local config = require"lspinstall/util".extract_config("denols")
 config.default_config.cmd[1] = "./bin/deno"
 
 return vim.tbl_extend('error', config, {

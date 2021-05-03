@@ -1,5 +1,4 @@
-local config = require'lspconfig'.clangd.document_config
-require'lspconfig/configs'.clangd = nil -- important, immediately unset the loaded config again
+local config = require"lspinstall/util".extract_config("clangd")
 config.default_config.cmd[1] = "./clangd/bin/clangd"
 
 return vim.tbl_extend('error', config, {

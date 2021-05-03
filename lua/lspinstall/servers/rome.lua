@@ -1,5 +1,4 @@
-local config = require'lspconfig'.rome.document_config
-require'lspconfig/configs'.rome = nil -- important, immediately unset the loaded config again
+local config = require"lspinstall/util".extract_config("rome")
 config.default_config.cmd[1] = "./node_modules/.bin/rome"
 
 return vim.tbl_extend('error', config, {

@@ -1,5 +1,4 @@
-local config = require'lspconfig'.rust_analyzer.document_config
-require'lspconfig/configs'.rust_analyzer = nil -- important, immediately unset the loaded config again
+local config = require"lspinstall/util".extract_config("rust_analyzer")
 config.default_config.cmd[1] = "./rust-analyzer"
 
 return vim.tbl_extend('error', config, {

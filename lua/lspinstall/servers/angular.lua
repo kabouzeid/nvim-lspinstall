@@ -1,5 +1,4 @@
-local config = require'lspconfig'.angularls.document_config
-require'lspconfig/configs'.angularls = nil -- important, immediately unset the loaded config again
+local config = require"lspinstall/util".extract_config("angularls")
 config.default_config.cmd[1] = "./node_modules/.bin/ngserver"
 
 return vim.tbl_extend('error', config, {

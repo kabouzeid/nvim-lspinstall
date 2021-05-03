@@ -93,9 +93,13 @@ function M.not_installed_servers()
   return vim.tbl_filter(function(key) return not M.is_server_installed(key) end, M.available_servers())
 end
 
+--- Sets the configs in lspconfig for all installed servers
 function M.setup()
   for lang, server_config in pairs(servers) do
-    if M.is_server_installed(lang) and not configs[lang] then -- don't overwrite any configs set by the user
+    if M.is_server_installed(lang) then
+      if configs[lang] then
+        vim.notify(string.format("lspinstall: overwriting config '%s'", lang), vim.log.levels.WARN)
+      end
       local config = vim.tbl_deep_extend("keep", server_config, {
         default_config = {
           cmd_cwd = install_path(lang)
