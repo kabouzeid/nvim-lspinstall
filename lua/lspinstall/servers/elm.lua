@@ -1,4 +1,4 @@
-local config = require"lspinstall/util".extract_config("pyright")
+local config = require"lspinstall/util".extract_config("elmls")
 config.default_config.cmd[1] = "./node_modules/.bin/elm-language-server"
 
 return vim.tbl_extend('error', config, {
