@@ -97,9 +97,7 @@ end
 function M.setup()
   for lang, server_config in pairs(servers) do
     if M.is_server_installed(lang) then
-      if configs[lang] then
-        vim.notify(string.format("lspinstall: overwriting config '%s'", lang), vim.log.levels.WARN)
-      end
+      if configs[lang] then return end -- don't overwrite existing config, leads to problems
       local config = vim.tbl_deep_extend("keep", server_config, {
         default_config = {
           cmd_cwd = install_path(lang)
