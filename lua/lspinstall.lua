@@ -5,7 +5,7 @@ local M = {}
 
 -- UTILITY
 
-local function install_path(lang)
+function M.install_path(lang)
   return vim.fn.stdpath("data") .. "/lspinstall/" .. lang
 end
 
@@ -20,7 +20,7 @@ function M.install_server(lang)
     return
   end
 
-  local path = install_path(lang)
+  local path = M.install_path(lang)
   vim.fn.mkdir(path, "p") -- fail: throws
 
   local function onExit(_, code)
@@ -46,7 +46,7 @@ function M.uninstall_server(lang)
     error("there is no server with the name " .. lang)
   end
 
-  local path = install_path(lang)
+  local path = M.install_path(lang)
 
   if vim.fn.isdirectory(path) ~= 1 then -- 0: false, 1: true
     error("server is not installed")
@@ -78,7 +78,7 @@ end
 -- UTILITY
 
 function M.is_server_installed(lang)
-  return vim.fn.isdirectory(install_path(lang)) == 1 -- 0: false, 1: true
+  return vim.fn.isdirectory(M.install_path(lang)) == 1 -- 0: false, 1: true
 end
 
 function M.available_servers()
@@ -100,14 +100,14 @@ function M.setup()
       if configs[lang] then return end -- don't overwrite existing config, leads to problems
       local config = vim.tbl_deep_extend("keep", server_config, {
         default_config = {
-          cmd_cwd = install_path(lang)
+          cmd_cwd = M.install_path(lang)
         }
       })
       local executable = config.default_config.cmd[1]
       if vim.regex([[^[.]\{1,2}\/]]):match_str(executable) then -- matches ./ and ../
         -- prepend the install path if the executable is a relative path
         -- we need this because for the executable cmd[1] itself, cwd is not considered!
-        config.default_config.cmd[1] = install_path(lang) .. "/" .. executable
+        config.default_config.cmd[1] = M.install_path(lang) .. "/" .. executable
       end
       configs[lang] = config
     end
