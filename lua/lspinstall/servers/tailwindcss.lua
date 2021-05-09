@@ -18,6 +18,7 @@ return {
       'blade',
       'django-html',
       'edge',
+      'eelixir',
       'ejs',
       'eruby',
       'gohtml',
@@ -59,6 +60,7 @@ return {
     },
     init_options = {
       userLanguages = {
+        eelixir = "html-eex",
         eruby = "html"
       }
     },
