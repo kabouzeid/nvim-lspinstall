@@ -21,4 +21,10 @@ function M.extract_config(name)
   return vim.deepcopy(config)
 end
 
+--- Gets lsp server install directory
+--@returns string
+function M.install_path(lang)
+  return vim.fn.stdpath("data") .. "/lspinstall/" .. lang
+end
+
 return M

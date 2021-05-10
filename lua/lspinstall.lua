@@ -1,13 +1,8 @@
 local servers = require'lspinstall/servers'
 local configs = require'lspconfig/configs'
+local install_path = require'lspinstall/util'.install_path
 
 local M = {}
-
--- UTILITY
-
-local function install_path(lang)
-  return vim.fn.stdpath("data") .. "/lspinstall/" .. lang
-end
 
 -- INSTALL
 
