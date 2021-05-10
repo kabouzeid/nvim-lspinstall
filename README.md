@@ -91,7 +91,6 @@ end
 | deno        | https://deno.land/                                                          |
 | diagnosticls| https://github.com/iamcco/diagnostic-languageserver                         |
 | efm         | https://github.com/mattn/efm-langserver                                     |
-| elm         | https://github.com/elm-tooling/elm-language-server
 | rome        | https://rome.tools/                                                         |
 
 Note: css, json and html language servers are pulled directly from the latest VSCode release, instead of using the outdated versions provided by e.g. `npm install vscode-html-languageserver-bin`.
