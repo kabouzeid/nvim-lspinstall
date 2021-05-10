@@ -12,20 +12,24 @@ return {
   ]],
   default_config = {
     cmd = { "node", "./tailwindcss-intellisense/extension/dist/server/index.js", "--stdio" },
+    -- filetypes copied and adjusted from tailwindcss-intellisense
     filetypes = {
       -- html
       'aspnetcorerazor',
       'blade',
       'django-html',
       'edge',
-      'eelixir',
+      'eelixir', -- vim ft
       'ejs',
-      'eruby',
+      'erb',
+      'eruby', -- vim ft
       'gohtml',
       'haml',
       'handlebars',
       'hbs',
       'html',
+      -- 'HTML (Eex)',
+      -- 'HTML (EEx)',
       'html-eex',
       'jade',
       'leaf',
@@ -61,7 +65,7 @@ return {
     init_options = {
       userLanguages = {
         eelixir = "html-eex",
-        eruby = "html"
+        eruby = "erb"
       }
     },
     root_dir = function(fname)
