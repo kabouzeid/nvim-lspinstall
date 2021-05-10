@@ -67,6 +67,7 @@ end
 | css         | css-language-features (pulled directly from the latest VSCode release)      |
 | dockerfile  | docker-langserver                                                           |
 | elixir      | Elixir Language Server (elixir-ls)                                          |
+| elm         | Elm Language Server (elm-ls)                                          |
 | go          | gopls                                                                       |
 | graphql     | GraphQL language service                                                    |
 | html        | html-language-features (pulled directly from the latest VSCode release)     |
@@ -90,6 +91,7 @@ end
 | deno        | https://deno.land/                                                          |
 | diagnosticls| https://github.com/iamcco/diagnostic-languageserver                         |
 | efm         | https://github.com/mattn/efm-langserver                                     |
+| elm         | https://github.com/elm-tooling/elm-language-server
 | rome        | https://rome.tools/                                                         |
 
 Note: css, json and html language servers are pulled directly from the latest VSCode release, instead of using the outdated versions provided by e.g. `npm install vscode-html-languageserver-bin`.
