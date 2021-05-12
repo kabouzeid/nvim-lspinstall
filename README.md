@@ -72,6 +72,7 @@ end
 | graphql     | GraphQL language service                                                    |
 | html        | html-language-features (pulled directly from the latest VSCode release)     |
 | json        | json-language-features (pulled directly from the latest VSCode release)     |
+| Kotlin      | kotlin-language-server                                                      |
 | latex       | texlab                                                                      |
 | lua         | (sumneko) lua-language-server                                               |
 | php         | intelephense                                                                |
@@ -104,7 +105,7 @@ Here `config` is a LSP config for [nvim-lspconfig](https://github.com/neovim/nvi
 The following example provides an installer for `bash-language-server`.
 ```lua
 -- 1. get the default config from nvim-lspconfig
-local config = require"lspinstall/util".extract_config("bashls") 
+local config = require"lspinstall/util".extract_config("bashls")
 -- 2. update the cmd. relative paths are allowed, lspinstall automatically adjusts the cmd and cmd_cwd for us!
 config.default_config.cmd[1] = "./node_modules/.bin/bash-language-server"
 

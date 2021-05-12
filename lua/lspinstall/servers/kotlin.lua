@@ -1,5 +1,5 @@
 local config = require "lspinstall/util".extract_config("kotlin_language_server")
-config.default_config.cmd[1] = "./kotlin-language-server/bin/kotlin-language-server"
+config.default_config.cmd[1] = "./bin/kotlin-language-server"
 
 return vim.tbl_extend(
     "error",
