@@ -15,6 +15,7 @@ local servers = {
   ["graphql"] = require'lspinstall/servers/graphql',
   ["html"] = require'lspinstall/servers/html',
   ["json"] = require'lspinstall/servers/json',
+  ["kotlin"] = require'lspinstall/servers/kotlin',
   ["latex"] = require'lspinstall/servers/latex',
   ["lua"] = require'lspinstall/servers/lua',
   ["php"] = require'lspinstall/servers/php',
