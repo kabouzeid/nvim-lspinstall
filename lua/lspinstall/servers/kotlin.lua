@@ -11,10 +11,11 @@ return vim.tbl_extend(
 
   unzip kotlin.zip
   rm kotlin.zip
-  mv server kotlin-language-server
+  mv server/* .
+  rmdir server
 
-  if [ ! -x ./kotlin-language-server/bin/kotlin-language-server ]; then
-    chmod +x ./kotlin-language-server/bin/kotlin-language-server
+  if [ ! -x ./bin/kotlin-language-server ]; then
+    chmod +x ./bin/kotlin-language-server
   fi
   ]]
     }
