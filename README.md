@@ -85,6 +85,7 @@ end
 | vim         | vim-language-server                                                         |
 | vue         | vls (vetur)                                                                 |
 | yaml        | yaml-language-server                                                        |
+| zig         | zig-language-server (zls)                                                   |
 
 | Name        | Description                                                                 |
 |-------------|-----------------------------------------------------------------------------|

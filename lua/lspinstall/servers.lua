@@ -29,6 +29,7 @@ local servers = {
   ["vim"] = require'lspinstall/servers/vim',
   ["vue"] = require'lspinstall/servers/vue',
   ["yaml"] = require'lspinstall/servers/yaml',
+  ["zig"] = require'lspinstall/servers/zig',
 }
 
 return servers
