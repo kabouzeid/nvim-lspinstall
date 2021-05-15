@@ -67,11 +67,11 @@ end
 | css         | css-language-features (pulled directly from the latest VSCode release)      |
 | dockerfile  | docker-langserver                                                           |
 | elixir      | Elixir Language Server (elixir-ls)                                          |
-| elm         | Elm Language Server (elm-ls)                                          |
+| elm         | Elm Language Server (elm-ls)                                                |
 | go          | gopls                                                                       |
 | graphql     | GraphQL language service                                                    |
 | html        | html-language-features (pulled directly from the latest VSCode release)     |
-| java        | Latest Eclipse JDTLS with Lombok support.                                   |
+| java        | Eclipse JDTLS with Lombok                                                   |
 | json        | json-language-features (pulled directly from the latest VSCode release)     |
 | kotlin      | kotlin-language-server                                                      |
 | latex       | texlab                                                                      |
