@@ -72,7 +72,7 @@ end
 | graphql     | GraphQL language service                                                    |
 | html        | html-language-features (pulled directly from the latest VSCode release)     |
 | json        | json-language-features (pulled directly from the latest VSCode release)     |
-| Kotlin      | kotlin-language-server                                                      |
+| kotlin      | kotlin-language-server                                                      |
 | latex       | texlab                                                                      |
 | lua         | (sumneko) lua-language-server                                               |
 | php         | intelephense                                                                |
