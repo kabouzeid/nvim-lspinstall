@@ -1,13 +1,8 @@
 local servers = require'lspinstall/servers'
 local configs = require'lspconfig/configs'
+local install_path = require'lspinstall/util'.install_path
 
 local M = {}
-
--- UTILITY
-
-local function install_path(lang)
-  return vim.fn.stdpath("data") .. "/lspinstall/" .. lang
-end
 
 -- INSTALL
 
@@ -21,9 +16,7 @@ function M.install_server(lang)
   end
 
   local path = install_path(lang)
-  if os.execute("mkdir -p " .. path) ~= 0 then
-    error("could not create directory " .. lang)
-  end
+  vim.fn.mkdir(path, "p") -- fail: throws
 
   local function onExit(_, code)
     if code ~= 0 then
@@ -50,7 +43,7 @@ function M.uninstall_server(lang)
 
   local path = install_path(lang)
 
-  if os.execute("test -d " .. path) ~= 0 then
+  if vim.fn.isdirectory(path) ~= 1 then -- 0: false, 1: true
     error("server is not installed")
   end
 
@@ -62,7 +55,7 @@ function M.uninstall_server(lang)
     if code ~= 0 then
       error("Could not uninstall " .. lang .. " language server!")
     end
-    if os.execute("rm -rf " .. path) ~= 0 then
+    if vim.fn.delete(path, "rf") ~= 0 then -- here 0: success, -1: fail
       error("could not delete directory " .. lang)
     end
     print("Successfully uninstalled " .. lang .. " language server!")
@@ -80,7 +73,7 @@ end
 -- UTILITY
 
 function M.is_server_installed(lang)
-  return os.execute("test -d " .. install_path(lang)) == 0
+  return vim.fn.isdirectory(install_path(lang)) == 1 -- 0: false, 1: true
 end
 
 function M.available_servers()
@@ -95,9 +88,11 @@ function M.not_installed_servers()
   return vim.tbl_filter(function(key) return not M.is_server_installed(key) end, M.available_servers())
 end
 
+--- Sets the configs in lspconfig for all installed servers
 function M.setup()
   for lang, server_config in pairs(servers) do
-    if M.is_server_installed(lang) and not configs[lang] then -- don't overwrite any configs set by the user
+    if M.is_server_installed(lang) then
+      if configs[lang] then return end -- don't overwrite existing config, leads to problems
       local config = vim.tbl_deep_extend("keep", server_config, {
         default_config = {
           cmd_cwd = install_path(lang)

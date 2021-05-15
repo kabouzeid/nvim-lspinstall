@@ -1,5 +1,4 @@
-local config = require'lspconfig'.intelephense.document_config
-require'lspconfig/configs'.intelephense = nil -- important, immediately unset the loaded config again
+local config = require"lspinstall/util".extract_config("intelephense")
 config.default_config.cmd[1] = "./node_modules/.bin/intelephense"
 
 return vim.tbl_extend('error', config, {

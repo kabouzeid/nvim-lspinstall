@@ -1,5 +1,4 @@
-local config = require'lspconfig'.bashls.document_config
-require'lspconfig/configs'.bashls = nil -- important, immediately unset the loaded config again
+local config = require"lspinstall/util".extract_config("bashls")
 config.default_config.cmd[1] = "./node_modules/.bin/bash-language-server"
 
 return vim.tbl_extend('error', config, {

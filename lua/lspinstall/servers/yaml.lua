@@ -1,5 +1,4 @@
-local config = require'lspconfig'.yamlls.document_config
-require'lspconfig/configs'.yamlls = nil -- important, immediately unset the loaded config again
+local config = require"lspinstall/util".extract_config("yamlls")
 config.default_config.cmd[1] = "./node_modules/.bin/yaml-language-server"
 
 return vim.tbl_extend('error', config, {

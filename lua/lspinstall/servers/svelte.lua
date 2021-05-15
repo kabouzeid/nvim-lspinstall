@@ -1,5 +1,4 @@
-local config = require'lspconfig'.svelte.document_config
-require'lspconfig/configs'.svelte = nil -- important, immediately unset the loaded config again
+local config = require"lspinstall/util".extract_config("svelte")
 config.default_config.cmd[1] = "./node_modules/.bin/svelteserver"
 
 return vim.tbl_extend('error', config, {

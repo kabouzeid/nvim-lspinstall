@@ -1,5 +1,4 @@
-local config = require'lspconfig'.terraformls.document_config
-require'lspconfig/configs'.terraformls = nil -- important, immediately unset the loaded config again
+local config = require"lspinstall/util".extract_config("terraformls")
 config.default_config.cmd[1] = "./terraform-ls"
 
 return vim.tbl_extend('error', config, {

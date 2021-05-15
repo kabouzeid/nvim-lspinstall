@@ -1,5 +1,4 @@
-local config = require'lspconfig'.gopls.document_config
-require'lspconfig/configs'.gopls = nil -- important, immediately unset the loaded config again
+local config = require"lspinstall/util".extract_config("gopls")
 config.default_config.cmd[1] = "./gopls"
 
 return vim.tbl_extend('error', config, {
