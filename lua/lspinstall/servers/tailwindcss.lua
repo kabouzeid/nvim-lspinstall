@@ -6,12 +6,12 @@ return {
   rm tailwindcss-intellisense.vsix
 
   echo "#!/usr/bin/env bash" > tailwindcss-intellisense.sh
-  echo "node \$(dirname \$0)/tailwindcss-intellisense/extension/dist/server/index.js \$*" >> tailwindcss-intellisense.sh
+  echo "node \$(dirname \$0)/tailwindcss-intellisense/extension/dist/server/tailwindServer.js \$*" >> tailwindcss-intellisense.sh
 
   chmod +x tailwindcss-intellisense.sh
   ]],
   default_config = {
-    cmd = { "node", "./tailwindcss-intellisense/extension/dist/server/index.js", "--stdio" },
+    cmd = { "node", "./tailwindcss-intellisense/extension/dist/server/tailwindServer.js", "--stdio" },
     -- filetypes copied and adjusted from tailwindcss-intellisense
     filetypes = {
       -- html
