@@ -43,6 +43,8 @@ function M.do_term_open(terminal_task,term_options)
     local shell = vim.o.shell
     if M.is_windows() ==false then
         vim.o.shell='/bin/bash'
+    else
+        vim.o.shell='cmd.exe'
     end
     vim.fn.termopen(terminal_task,term_options)
     vim.o.shell = shell
