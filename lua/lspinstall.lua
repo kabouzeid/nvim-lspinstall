@@ -1,5 +1,6 @@
 local servers = require'lspinstall/servers'
 local configs = require'lspconfig/configs'
+local lsp_util = require'lspinstall/util'
 local install_path = require'lspinstall/util'.install_path
 
 local M = {}
@@ -26,12 +27,7 @@ function M.install_server(lang)
     if M.post_install_hook then M.post_install_hook() end
   end
 
-  vim.cmd("new")
-  local shell = vim.o.shell
-  vim.o.shell = '/bin/bash'
-  vim.fn.termopen("set -e\n" .. servers[lang].install_script, {["cwd"] = path, ["on_exit"] = onExit})
-  vim.o.shell = shell
-  vim.cmd("startinsert")
+  lsp_util.do_term_open(servers[lang].install_script,{["cwd"] = path, ["on_exit"] = onExit})
 end
 
 -- UNINSTALL
