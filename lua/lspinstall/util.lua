@@ -27,4 +27,26 @@ function M.install_path(lang)
   return vim.fn.stdpath("data") .. "/lspinstall/" .. lang
 end
 
+--- Check if on Windows or not
+--@returns true if it is windows os, false otherwise
+function M.is_windows()
+    if os.getenv("HOME") == nil then
+        return true
+    end
+    return false
+end
+
+--- Sets the shell to be used as bash, if not on windows
+-- or OS is linux/mac
+function M.do_term_open(terminal_task,term_options)
+    vim.cmd("new")
+    local shell = vim.o.shell
+    if M.is_windows() ==false then
+        vim.o.shell='/bin/bash'
+    end
+    vim.fn.termopen(terminal_task,term_options)
+    vim.o.shell = shell
+    vim.cmd("startinsert")
+end
+
 return M
