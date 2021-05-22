@@ -4,10 +4,10 @@ local lsp_util = require"lspinstall/util"
 local script_to_use = ""
 
 if lsp_util.is_windows() then
-    config.default_config.cmd[1] = ".\\venv\\Scripts\\cmake-language-server.exe"
+    config.default_config.cmd[1] = "./venv/Scripts/cmake-language-server.exe"
     script_to_use = {
         'cmd.exe','/c','python -m venv venv',
-    -- '&& .\\venv\\Scripts\\pip.exe install --upgrade pip ', removed, 
+    -- '&& .\\venv\\Scripts\\pip.exe install --upgrade pip ', removed,
         '&& .\\venv\\Scripts\\pip.exe install -U cmake-language-server'
     }
 else
