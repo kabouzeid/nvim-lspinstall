@@ -5,7 +5,7 @@ local script_to_use=""
 
 if lsp_util.is_windows() then
     config.default_config.cmd = { "./sumneko-lua-language-server.cmd" }
-    script_to_use={
+    script_to_use = {
         'cmd.exe','/c',
     [[(for /f "tokens=1,* delims=:" %a in ('curl -s https://api.github.com/repos/sumneko/vscode-lua/releases/latest ^| findstr "browser_" ') do curl -L -o sumneko-lua.vsix %b)]],
     "&& ECHO cleaning ",
