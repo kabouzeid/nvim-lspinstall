@@ -4,6 +4,6 @@ config.default_config.cmd[1] = "./node_modules/.bin/yaml-language-server"
 return vim.tbl_extend('error', config, {
   install_script = [[
   ! test -f package.json && yarn init -y  || true
-  yarn add --force yaml-language-server
+  yarn add yaml-language-server@latest
   ]]
 })
