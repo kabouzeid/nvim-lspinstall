@@ -30,14 +30,24 @@ end
 --- Check if on Windows or not
 --@returns true if it is windows os, false otherwise
 function M.is_windows()
-    if os.getenv("HOME") == nil then
+    local home_dir = os.getenv("HOME")
+    if home_dir == nil then
+        -- normally only windows users haven't defined this env variable
         return true
+    else
+        -- just incase a user has defined it and is on windows
+        -- check that ':' is contained in index 2, if so then it is windows
+        -- otherwise it's linux
+        local result = string.find(home_dir,':')
+        if result == 2 then
+            return true
+        end
     end
     return false
 end
 
 --- Sets the shell to be used as bash, if not on windows
--- or OS is linux/mac
+-- or OS is linux/mac, cmd.exe if on windows while executing the command
 function M.do_term_open(terminal_task,term_options)
     vim.cmd("new")
     local shell = vim.o.shell
