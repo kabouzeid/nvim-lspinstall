@@ -88,6 +88,13 @@ cat << EOF > jdtls.sh
 
 WORKSPACE="\$1"
 
+die () {
+  echo
+  echo "$*"
+  echo
+  exit 1
+}
+
 case $(uname) in
   Linux)
     CONFIG="$(pwd)/config_linux"
