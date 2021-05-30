@@ -7,6 +7,7 @@ It adds the missing `:LspInstall <language>` command to conveniently install lan
 
 The language servers are installed *locally* into `stdpath("data")`, you can use `:echo stdpath("data")` to find out which directory that is on your machine.
 
+Refer to my [blog post](https://ka.codes/posts/nvim-lspinstall) in case you are wondering why you wouldn't just use your system's package manager for this.
 
 ## Installation
 Via [Vim-Plug](https://github.com/junegunn/vim-plug)
