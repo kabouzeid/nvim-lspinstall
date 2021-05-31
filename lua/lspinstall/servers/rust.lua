@@ -7,6 +7,10 @@ return vim.tbl_extend('error', config, {
   os=$(uname -s | tr "[:upper:]" "[:lower:]")
   mchn=$(uname -m | tr "[:upper:]" "[:lower:]")
 
+  if [ $mchn = "arm64" ]; then
+    mchn="aarch64"
+  fi
+
   case $os in
   linux)
   platform="unknown-linux-gnu"
