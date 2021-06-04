@@ -5,11 +5,8 @@ local install_path = require"lspinstall/util".install_path
 local M = {}
 
 -- INSTALL
-
-function M.install_server(lang)
+function M.install_server_no_prompt(lang)
   if not servers[lang] then error("there is no server with the name " .. lang) end
-
-  if vim.fn.confirm("Install " .. lang .. " language server?", "&Yes\n&Cancel") ~= 1 then return end
 
   local path = install_path(lang)
   vim.fn.mkdir(path, "p") -- fail: throws
@@ -27,6 +24,14 @@ function M.install_server(lang)
                   { ["cwd"] = path, ["on_exit"] = onExit })
   vim.o.shell = shell
   vim.cmd("startinsert")
+end
+
+function M.install_server(lang)
+  if not servers[lang] then error("there is no server with the name " .. lang) end
+
+  if vim.fn.confirm("Install " .. lang .. " language server?", "&Yes\n&Cancel") ~= 1 then return end
+
+  M.install_server_no_prompt(lang)
 end
 
 -- UNINSTALL
