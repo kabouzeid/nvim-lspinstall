@@ -62,6 +62,7 @@ end
 |-------------|-----------------------------------------------------------------------------|
 | angular     | Angular Language Service                                                    |
 | bash        | bash-language-server                                                        |
+| clojure     | clojure-lsp                                                                 |
 | cmake       | cmake-language-server                                                       |
 | cpp         | clangd                                                                      |
 | csharp      | OmniSharp                                                                   |
