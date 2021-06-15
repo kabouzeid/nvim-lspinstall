@@ -17,6 +17,8 @@ return {
     filetypes = {
       -- html
       'aspnetcorerazor',
+      'astro',
+      'astro-markdown',
       'blade',
       'django-html',
       'edge',
@@ -65,8 +67,8 @@ return {
     },
     init_options = {
       userLanguages = {
-        eelixir = "html-eex",
-        eruby = "erb"
+        eelixir = 'html-eex',
+        eruby = 'erb',
       }
     },
     settings = {
