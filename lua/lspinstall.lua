@@ -7,24 +7,21 @@ local M = {}
 -- INSTALL
 
 function M.install_server(lang)
-  if not servers[lang] then error("there is no server with the name " .. lang) end
-
-  if vim.fn.confirm("Install " .. lang .. " language server?", "&Yes\n&Cancel") ~= 1 then return end
+  if not servers[lang] then error("Could not find language server for " .. lang) end
 
   local path = install_path(lang)
   vim.fn.mkdir(path, "p") -- fail: throws
 
   local function onExit(_, code)
-    if code ~= 0 then error("Could not install " .. lang .. " language server!") end
-    print("Successfully installed " .. lang .. " language server!")
+    if code ~= 0 then error("[nvim-lspinstall] Could not install language server for " .. lang) end
+    vim.notify("[nvim-lspinstall] Successfully installed language server for " .. lang)
     if M.post_install_hook then M.post_install_hook() end
   end
 
   vim.cmd("new")
   local shell = vim.o.shell
   vim.o.shell = "/bin/bash"
-  vim.fn.termopen("set -e\n" .. servers[lang].install_script,
-                  { ["cwd"] = path, ["on_exit"] = onExit })
+  vim.fn.termopen("set -e\n" .. servers[lang].install_script, { cwd = path, on_exit = onExit })
   vim.o.shell = shell
   vim.cmd("startinsert")
 end
@@ -32,22 +29,20 @@ end
 -- UNINSTALL
 
 function M.uninstall_server(lang)
-  if not servers[lang] then error("there is no server with the name " .. lang) end
+  if not servers[lang] then error("Could not find language server for " .. lang) end
 
   local path = install_path(lang)
 
   if vim.fn.isdirectory(path) ~= 1 then -- 0: false, 1: true
-    error("server is not installed")
+    error("Language server is not installed")
   end
 
-  if vim.fn.confirm("Uninstall " .. lang .. " language server?", "&Yes\n&Cancel") ~= 1 then return end
-
   local function onExit(_, code)
-    if code ~= 0 then error("Could not uninstall " .. lang .. " language server!") end
+    if code ~= 0 then error("[nvim-lspinstall] Could not uninstall language server for " .. lang) end
     if vim.fn.delete(path, "rf") ~= 0 then -- here 0: success, -1: fail
-      error("could not delete directory " .. lang)
+      error("[nvim-lspinstall] Could not delete directory " .. lang)
     end
-    print("Successfully uninstalled " .. lang .. " language server!")
+    vim.notify("[nvim-lspinstall] Successfully uninstalled language server for " .. lang)
     if M.post_uninstall_hook then M.post_uninstall_hook() end
   end
 
@@ -55,7 +50,7 @@ function M.uninstall_server(lang)
   local shell = vim.o.shell
   vim.o.shell = "/bin/bash"
   vim.fn.termopen("set -e\n" .. (servers[lang].uninstall_script or ""),
-                  { ["cwd"] = path, ["on_exit"] = onExit })
+                  { cwd = path, on_exit = onExit })
   vim.o.shell = shell
   vim.cmd("startinsert")
 end
