@@ -70,6 +70,7 @@ end
 | dockerfile  | docker-langserver                                                           |
 | elixir      | Elixir Language Server (elixir-ls)                                          |
 | elm         | Elm Language Server (elm-ls)                                                |
+| fortran     | Fortran Language Server (fortls)                                            |
 | go          | gopls                                                                       |
 | graphql     | GraphQL language service                                                    |
 | html        | html-language-features (pulled directly from the latest VSCode release)     |
