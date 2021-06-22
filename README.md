@@ -7,6 +7,7 @@ It adds the missing `:LspInstall <language>` command to conveniently install lan
 
 The language servers are installed *locally* into `stdpath("data")`, you can use `:echo stdpath("data")` to find out which directory that is on your machine.
 
+[Isn't this something I should use my system's package manager for?](https://ka.codes/posts/nvim-lspinstall#nvim-lspinstall)
 
 ## Installation
 Via [Vim-Plug](https://github.com/junegunn/vim-plug)
@@ -61,6 +62,7 @@ end
 |-------------|-----------------------------------------------------------------------------|
 | angular     | Angular Language Service                                                    |
 | bash        | bash-language-server                                                        |
+| clojure     | clojure-lsp                                                                 |
 | cmake       | cmake-language-server                                                       |
 | cpp         | clangd                                                                      |
 | csharp      | OmniSharp                                                                   |
@@ -68,6 +70,7 @@ end
 | dockerfile  | docker-langserver                                                           |
 | elixir      | Elixir Language Server (elixir-ls)                                          |
 | elm         | Elm Language Server (elm-ls)                                                |
+| fortran     | Fortran Language Server (fortls)                                            |
 | go          | gopls                                                                       |
 | graphql     | GraphQL language service                                                    |
 | html        | html-language-features (pulled directly from the latest VSCode release)     |

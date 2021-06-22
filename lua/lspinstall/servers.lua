@@ -1,6 +1,7 @@
 local servers = {
   ["angular"] = require'lspinstall/servers/angular',
   ["bash"] = require'lspinstall/servers/bash',
+  ["clojure"] = require'lspinstall/servers/clojure',
   ["cmake"] = require'lspinstall/servers/cmake',
   ["cpp"] = require'lspinstall/servers/cpp',
   ["csharp"] = require'lspinstall/servers/csharp',
@@ -11,6 +12,7 @@ local servers = {
   ["efm"] = require'lspinstall/servers/efm',
   ["elixir"] = require'lspinstall/servers/elixir',
   ["elm"] = require'lspinstall/servers/elm',
+  ["fortran"] = require'lspinstall/servers/fortran',
   ["go"] = require'lspinstall/servers/go',
   ["graphql"] = require'lspinstall/servers/graphql',
   ["html"] = require'lspinstall/servers/html',

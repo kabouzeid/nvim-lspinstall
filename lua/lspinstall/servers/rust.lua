@@ -5,18 +5,26 @@ return vim.tbl_extend('error', config, {
   -- adjusted from https://github.com/mattn/vim-lsp-settings/blob/master/installer/install-rust-analyzer.sh
   install_script = [[
   os=$(uname -s | tr "[:upper:]" "[:lower:]")
+  mchn=$(uname -m | tr "[:upper:]" "[:lower:]")
+
+  if [ $mchn = "arm64" ]; then
+    mchn="aarch64"
+  fi
 
   case $os in
   linux)
-  platform="linux"
+  platform="unknown-linux-gnu"
   ;;
   darwin)
-  platform="mac"
+  platform="apple-darwin"
   ;;
   esac
 
-  curl -L -o "rust-analyzer-$platform" "https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-$platform"
-  mv rust-analyzer-$platform rust-analyzer
+  curl -L -o "rust-analyzer-$mchn-$platform.gz" "https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-$mchn-$platform.gz"
+  gzip -d rust-analyzer-$mchn-$platform.gz
+
+  mv rust-analyzer-$mchn-$platform rust-analyzer
+
   chmod +x rust-analyzer
   ]]
 })

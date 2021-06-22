@@ -1,8 +1,9 @@
 local util = require"lspconfig".util
 return {
   install_script = [[
-  curl -L -o tailwindcss-intellisense.vsix $(curl -s https://api.github.com/repos/tailwindlabs/tailwindcss-intellisense/releases/latest | grep 'browser_' | cut -d\" -f4)
-  unzip -o tailwindcss-intellisense.vsix -d tailwindcss-intellisense
+  curl -L -o tailwindcss-intellisense.vsix https://github.com/tailwindlabs/tailwindcss-intellisense/releases/download/v0.6.8/vscode-tailwindcss-0.6.8.vsix
+  rm -rf tailwindcss-intellisense
+  unzip tailwindcss-intellisense.vsix -d tailwindcss-intellisense
   rm tailwindcss-intellisense.vsix
 
   echo "#!/usr/bin/env bash" > tailwindcss-intellisense.sh
@@ -16,6 +17,8 @@ return {
     filetypes = {
       -- html
       'aspnetcorerazor',
+      'astro',
+      'astro-markdown',
       'blade',
       'django-html',
       'edge',
@@ -64,32 +67,38 @@ return {
     },
     init_options = {
       userLanguages = {
-        eelixir = "html-eex",
-        eruby = "erb"
+        eelixir = 'html-eex',
+        eruby = 'erb',
       }
     },
+    settings = {
+      tailwindCSS = {
+        validate = true,
+        lint = {
+          cssConflict = "warning",
+          invalidApply = "error",
+          invalidScreen = "error",
+          invalidVariant = "error",
+          invalidConfigPath = "error",
+          invalidTailwindDirective = "error",
+          recommendedVariantOrder = "warning",
+        },
+      },
+    },
+    on_new_config = function(new_config)
+      if not new_config.settings then new_config.settings = {} end
+      if not new_config.settings.editor then new_config.settings.editor = {} end
+      if not new_config.settings.editor.tabSize then
+        -- set tab size for hover
+        new_config.settings.editor.tabSize = vim.lsp.util.get_effective_tabstop()
+      end
+    end,
     root_dir = function(fname)
       return util.root_pattern('tailwind.config.js', 'tailwind.config.ts')(fname) or
       util.root_pattern('postcss.config.js', 'postcss.config.ts')(fname) or
       util.find_package_json_ancestor(fname) or
       util.find_node_modules_ancestor(fname) or
       util.find_git_ancestor(fname)
-      end,
-    handlers = {
-      -- 1. tailwindcss lang server uses this instead of workspace/configuration
-      -- 2. tailwindcss lang server waits for this repsonse before providing hover
-      ["tailwindcss/getConfiguration"] = function (err, _, params, client_id, bufnr, _)
-        -- params = { _id, languageId? }
-
-        local client = vim.lsp.get_client_by_id(client_id)
-        if not client then return end
-        if err then error(vim.inspect(err)) end
-
-        local configuration = vim.lsp.util.lookup_section(client.config.settings, "tailwindCSS") or {}
-        configuration._id = params._id
-        configuration.tabSize = vim.lsp.util.get_effective_tabstop(bufnr) -- used for the CSS preview
-        vim.lsp.buf_notify(bufnr, "tailwindcss/getConfigurationResponse", configuration)
-      end
-    }
+    end,
   }
 }
