@@ -1,7 +1,7 @@
 local config = require"lspinstall/util".extract_config("sumneko_lua")
 local lsp_util = require"lspinstall/util"
 
-local script_to_use=""
+local script_to_use=nil
 
 if lsp_util.is_windows() then
     config.default_config.cmd = { "./sumneko-lua-language-server.cmd" }

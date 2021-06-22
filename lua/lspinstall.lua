@@ -1,7 +1,7 @@
 local servers = require "lspinstall/servers"
 local configs = require "lspconfig/configs"
 local install_path = require"lspinstall/util".install_path
-local lsp_util = require'lspinstall/util'
+local lsp_util = require"lspinstall/util"
 
 local M = {}
 
@@ -18,13 +18,13 @@ function M.install_server(lang)
     vim.notify("[nvim-lspinstall] Successfully installed language server for " .. lang)
     if M.post_install_hook then M.post_install_hook() end
   end
-  --lsp_util.do_term_open(servers[lang].install_script,{["cwd"] = path, ["on_exit"] = onExit})
-  vim.cmd("new")
-  local shell = vim.o.shell
-  vim.o.shell = "/bin/bash"
-  vim.fn.termopen("set -e\n" .. servers[lang].install_script, { cwd = path, on_exit = onExit })
-  vim.o.shell = shell
-  vim.cmd("startinsert")
+
+  local install_script = servers[lang].install_script
+  if install_script == nil then
+    lsp_util.print_warning("sorry no installation for your particular OS","WarningMsg")
+    return
+  end
+  lsp_util.do_term_open( install_script ,{["cwd"] = path, ["on_exit"] = onExit})
 end
 
 -- UNINSTALL
@@ -47,13 +47,7 @@ function M.uninstall_server(lang)
     if M.post_uninstall_hook then M.post_uninstall_hook() end
   end
 
-  vim.cmd("new")
-  local shell = vim.o.shell
-  vim.o.shell = "/bin/bash"
-  vim.fn.termopen("set -e\n" .. (servers[lang].uninstall_script or ""),
-                  { cwd = path, on_exit = onExit })
-  vim.o.shell = shell
-  vim.cmd("startinsert")
+  lsp_util.do_term_open((servers[lang].uninstall_script or ""),{ cwd = path, on_exit = onExit })
 end
 
 -- UTILITY
@@ -62,7 +56,22 @@ function M.is_server_installed(lang)
   return vim.fn.isdirectory(install_path(lang)) == 1 -- 0: false, 1: true
 end
 
-function M.available_servers() return vim.tbl_keys(servers) end
+function M.available_servers()
+  local languages = {}
+  for k, _ in pairs(servers) do
+    -- Only show completions for servers that have windows support
+    if lsp_util.is_windows() then
+      if servers[k].install_script ~= nil then
+        print(k)
+        table.insert(languages,k)
+      end
+    else
+      -- show all when not on windows
+      table.insert(languages,k)
+    end
+  end
+  return languages
+end
 
 function M.installed_servers()
   return vim.tbl_filter(function(key) return M.is_server_installed(key) end, M.available_servers())
@@ -70,7 +79,7 @@ end
 
 function M.not_installed_servers()
   return vim.tbl_filter(function(key) return not M.is_server_installed(key) end,
-                        M.available_servers())
+  M.available_servers())
 end
 
 --- Sets the configs in lspconfig for all installed servers
@@ -78,7 +87,7 @@ function M.setup()
   for lang, server_config in pairs(servers) do
     if M.is_server_installed(lang) and not configs[lang] then -- don't overwrite existing config, leads to problems
       local config = vim.tbl_deep_extend("keep", server_config,
-                                         { default_config = { cmd_cwd = install_path(lang) } })
+      { default_config = { cmd_cwd = install_path(lang) } })
       if config.default_config.cmd then
         local executable = config.default_config.cmd[1]
         if vim.regex([[^[.]\{1,2}\/]]):match_str(executable) then -- matches ./ and ../

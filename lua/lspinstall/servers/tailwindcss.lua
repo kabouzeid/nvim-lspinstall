@@ -1,6 +1,14 @@
 local util = require"lspconfig".util
-return {
-  install_script = [[
+local lsp_util = require"lspinstall/util"
+
+local script_to_use = nil
+local cmd_to_use = ""
+
+if lsp_util.is_windows() then
+  --TODO somebody implement this if possible for windows
+else
+  cmd_to_use = { "node", "./tailwindcss-intellisense/extension/dist/server/tailwindServer.js", "--stdio" }
+  script_to_use  = [[
   curl -L -o tailwindcss-intellisense.vsix https://github.com/tailwindlabs/tailwindcss-intellisense/releases/download/v0.6.8/vscode-tailwindcss-0.6.8.vsix
   rm -rf tailwindcss-intellisense
   unzip tailwindcss-intellisense.vsix -d tailwindcss-intellisense
@@ -10,9 +18,13 @@ return {
   echo "node \$(dirname \$0)/tailwindcss-intellisense/extension/dist/server/tailwindServer.js \$*" >> tailwindcss-intellisense.sh
 
   chmod +x tailwindcss-intellisense.sh
-  ]],
+  ]]
+end
+
+return {
+  install_script = script_to_use,
   default_config = {
-    cmd = { "node", "./tailwindcss-intellisense/extension/dist/server/tailwindServer.js", "--stdio" },
+    cmd = cmd_to_use,
     -- filetypes copied and adjusted from tailwindcss-intellisense
     filetypes = {
       -- html

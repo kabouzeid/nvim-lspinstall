@@ -1,19 +1,19 @@
 local config = require"lspinstall/util".extract_config("pyright")
 local lsp_util = require"lspinstall/util"
 
-local script_to_use=""
+local script_to_use = nil
 
 if lsp_util.is_windows() then
-    config.default_config.cmd[1] = "./node_modules/.bin/pyright-langserver.cmd"
-    script_to_use = {
-        'cmd.exe','/c','npm install pyright@latest'
-    }
+  config.default_config.cmd[1] = "./node_modules/.bin/pyright-langserver.cmd"
+  script_to_use = {
+    'cmd.exe','/c','npm install pyright@latest'
+  }
 else
-    config.default_config.cmd[1] = "./node_modules/.bin/pyright-langserver"
-    script_to_use = [[
-      ! test -f package.json && npm init -y --scope=lspinstall || true
-      npm install pyright@latest
-    ]]
+  config.default_config.cmd[1] = "./node_modules/.bin/pyright-langserver"
+  script_to_use = [[
+  ! test -f package.json && npm init -y --scope=lspinstall || true
+  npm install pyright@latest
+  ]]
 end
 
 return vim.tbl_extend('error', config, {
