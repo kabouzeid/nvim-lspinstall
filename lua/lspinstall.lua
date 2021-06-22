@@ -62,7 +62,6 @@ function M.available_servers()
     -- Only show completions for servers that have windows support
     if lsp_util.is_windows() then
       if servers[k].install_script ~= nil then
-        print(k)
         table.insert(languages,k)
       end
     else
