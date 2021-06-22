@@ -30,18 +30,8 @@ end
 --- Check if on Windows or not
 --@returns true if it is windows os, false otherwise
 function M.is_windows()
-    local home_dir = os.getenv("HOME")
-    if home_dir == nil then
-        -- normally only windows users haven't defined this env variable
+    if vim.fn.has('win32') then
         return true
-    else
-        -- just incase a user has defined it and is on windows
-        -- check that ':' is contained in index 2, if so then it is windows
-        -- otherwise it's linux
-        local result = string.find(home_dir,':')
-        if result == 2 then
-            return true
-        end
     end
     return false
 end
