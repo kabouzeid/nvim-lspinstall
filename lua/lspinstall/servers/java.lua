@@ -44,7 +44,8 @@ return {
         local root = util.root_pattern(unpack(patterns))(...)
         if root then return root end
       end
-      return util.root_pattern(".git")(...)
+      -- If the root_pattern, does not match, use the current directory instead
+      return vim.fn.getcwd()
     end,
     init_options = {
       workspace = path.join { vim.loop.os_homedir(), "workspace" },
