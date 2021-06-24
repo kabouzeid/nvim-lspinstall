@@ -136,14 +136,14 @@ fi
   -Dlog.level=ALL \\
   -Xms1g \\
   -Xmx2G \\
+  -javaagent:$(pwd)/lombok.jar \\
+  -Xbootclasspath/a:$(pwd)/lombok.jar \\
   -jar \$(echo "\$JAR") \\
   -configuration "\$CONFIG" \\
   -data "\$WORKSPACE" \\
   --add-modules=ALL-SYSTEM \\
   --add-opens java.base/java.util=ALL-UNNAMED \\
-  --add-opens java.base/java.lang=ALL-UNNAMED \\
-  -javaagent:$(pwd)/lombok.jar \\
-  -Xbootclasspath/a:$(pwd)/lombok.jar
+  --add-opens java.base/java.lang=ALL-UNNAMED
 EOF
     chmod +x jdtls.sh
   ]],
