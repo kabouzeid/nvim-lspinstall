@@ -3,7 +3,8 @@ config.default_config.cmd = { "./hls" }
 
 return vim.tbl_extend('error', config, {
   install_script = [[
-   os=$(uname -s | tr "[:upper:]" "[:lower:]")
+  os=$(uname -s | tr "[:upper:]" "[:lower:]")
+
   case $os in
   linux)
   platform="Linux"
