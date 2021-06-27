@@ -73,6 +73,7 @@ end
 | fortran     | Fortran Language Server (fortls)                                            |
 | go          | gopls                                                                       |
 | graphql     | GraphQL language service                                                    |
+| haskell     | haskell-language-server                                                     |
 | html        | html-language-features (pulled directly from the latest VSCode release)     |
 | java        | Eclipse JDTLS with Lombok                                                   |
 | json        | json-language-features (pulled directly from the latest VSCode release)     |
