@@ -15,6 +15,7 @@ local servers = {
   ["fortran"] = require'lspinstall/servers/fortran',
   ["go"] = require'lspinstall/servers/go',
   ["graphql"] = require'lspinstall/servers/graphql',
+  ["haskell"] = require'lspinstall/servers/haskell',
   ["html"] = require'lspinstall/servers/html',
   ["java"] = require'lspinstall/servers/java',
   ["json"] = require'lspinstall/servers/json',
