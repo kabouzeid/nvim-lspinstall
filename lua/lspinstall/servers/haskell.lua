@@ -15,10 +15,10 @@ return vim.tbl_extend('error', config, {
   esac
 
   curl -L -o hls.tar.gz $(curl -s https://api.github.com/repos/haskell/haskell-language-server/releases/latest | grep 'browser_' | cut -d\" -f4 | grep "$platform" | grep '.tar.gz')
-  tar -xf hls.tar.gz
+  tar -xzf hls.tar.gz
   rm -f hls.tar.gz
+  chmod +x haskell-language-server-*
 
-  ls | grep 'haskell' | while read line; do chmod +x $line; done
   echo "#!/usr/bin/env bash" > hls
   echo "PATH=\$PATH:$(pwd) $(pwd)/haskell-language-server-wrapper --lsp" >> hls
   chmod +x hls
