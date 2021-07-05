@@ -81,6 +81,7 @@ end
 | latex       | texlab                                                                      |
 | lua         | (sumneko) lua-language-server                                               |
 | php         | intelephense                                                                |
+| purescript  | purescript-language-server                                                  |
 | python      | pyright-langserver                                                          |
 | ruby        | solargraph                                                                  |
 | rust        | rust-analyzer                                                               |
