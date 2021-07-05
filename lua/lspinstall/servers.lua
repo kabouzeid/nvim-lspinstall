@@ -12,6 +12,7 @@ local servers = {
   ["efm"] = require'lspinstall/servers/efm',
   ["elixir"] = require'lspinstall/servers/elixir',
   ["elm"] = require'lspinstall/servers/elm',
+  ["ember"] = require'lspinstall/servers/ember',
   ["fortran"] = require'lspinstall/servers/fortran',
   ["go"] = require'lspinstall/servers/go',
   ["graphql"] = require'lspinstall/servers/graphql',
