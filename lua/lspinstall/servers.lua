@@ -23,6 +23,7 @@ local servers = {
   ["latex"] = require'lspinstall/servers/latex',
   ["lua"] = require'lspinstall/servers/lua',
   ["php"] = require'lspinstall/servers/php',
+  ["purescript"] = require'lspinstall/servers/purescript',
   ["python"] = require'lspinstall/servers/python',
   ["rome"] = require'lspinstall/servers/rome',
   ["ruby"] = require'lspinstall/servers/ruby',
