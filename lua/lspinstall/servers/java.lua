@@ -126,15 +126,15 @@ location of your Java installation."
 
 # Determine the Java command to use to start the JVM.
 if [ -n "\$NVIM_LSPINSTALL_JAVA_HOME" ] ; then
-  JAVACMD="$(javacmd_from_javahome \$NVIM_LSPINSTALL_JAVA_HOME)"
+  JAVACMD="\$(javacmd_from_javahome \$NVIM_LSPINSTALL_JAVA_HOME)"
   if [ ! -x "\$JAVACMD" ] ; then
     if [ -n "\$JAVA_HOME" ] ; then
-      JAVACMD="$(javacmd_from_javahome \$JAVA_HOME)"
+      JAVACMD="\$(javacmd_from_javahome \$JAVA_HOME)"
     fi
   fi
   verify_javacmd \$JAVACMD
 elif [ -n "\$JAVA_HOME" ] ; then
-  JAVACMD="$(javacmd_from_javahome \$JAVA_HOME)"
+  JAVACMD="\$(javacmd_from_javahome \$JAVA_HOME)"
   verify_javacmd \$JAVACMD
 else
   JAVACMD="java"
