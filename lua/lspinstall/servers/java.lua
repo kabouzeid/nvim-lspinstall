@@ -106,23 +106,39 @@ esac
 
 JAR="$(pwd)/plugins/org.eclipse.equinox.launcher_*.jar"
 
-# Determine the Java command to use to start the JVM.
-if [ -n "\$JAVA_HOME" ] ; then
-    if [ -x "\$JAVA_HOME/jre/sh/java" ] ; then
-        # IBM's JDK on AIX uses strange locations for the executables
-        JAVACMD="\$JAVA_HOME/jre/sh/java"
-    else
-        JAVACMD="\$JAVA_HOME/bin/java"
-    fi
-    if [ ! -x "\$JAVACMD" ] ; then
-        die "ERROR: JAVA_HOME is set to an invalid directory: \$JAVA_HOME
+javacmd_from_javahome () {
+  if [ -x "\$1/jre/sh/java" ] ; then
+    # IBM's JDK on AIX uses strange locations for the executables
+    echo "\$1/jre/sh/java"
+  else
+    echo "\$1/bin/java"
+  fi
+}
 
-Please set the JAVA_HOME variable in your environment to match the
+verify_javacmd() {
+  if [ ! -x "\$1" ] ; then
+        die "ERROR: NVIM_LSPINSTALL_JAVA_HOME/JAVA_HOME is set to an invalid directory: \$NVIM_LSPINSTALL_JAVA_HOME\$JAVA_HOME
+
+Please set the NVIM_LSPINSTALL_JAVA_HOME/JAVA_HOME variable in your environment to match the
 location of your Java installation."
+  fi
+}
+
+# Determine the Java command to use to start the JVM.
+if [ -n "\$NVIM_LSPINSTALL_JAVA_HOME" ] ; then
+  JAVACMD="$(javacmd_from_javahome \$NVIM_LSPINSTALL_JAVA_HOME)"
+  if [ ! -x "\$JAVACMD" ] ; then
+    if [ -n "\$JAVA_HOME" ] ; then
+      JAVACMD="$(javacmd_from_javahome \$JAVA_HOME)"
     fi
+  fi
+  verify_javacmd \$JAVACMD
+elif [ -n "\$JAVA_HOME" ] ; then
+  JAVACMD="$(javacmd_from_javahome \$JAVA_HOME)"
+  verify_javacmd \$JAVACMD
 else
-    JAVACMD="java"
-    which java >/dev/null 2>&1 || die "ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
+  JAVACMD="java"
+  which java >/dev/null 2>&1 || die "ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
 
 Please set the JAVA_HOME variable in your environment to match the
 location of your Java installation."
