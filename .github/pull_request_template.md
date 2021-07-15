@@ -1,3 +1,5 @@
+# PLEASE READ BEFORE CREATING THE PR :)
+
 ## For new install scripts
 
 You need to create one file, and edit two files. See this PR for a good example: https://github.com/kabouzeid/nvim-lspinstall/pull/106/files
