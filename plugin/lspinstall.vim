@@ -25,7 +25,7 @@ endfunction
 command! -nargs=1 -complete=custom,s:complete_install LspInstall :call lspinstall#install_server('<args>')
 command! -nargs=1 -complete=custom,s:complete_uninstall LspUninstall :call lspinstall#uninstall_server('<args>')
 
-command! LspPrintInstalled :echo lspinstall#installed_servers()
+command! LspListInstalled :echo lspinstall#installed_servers()
 
 function! s:complete_install(arg, line, pos) abort
   return join(lspinstall#available_servers(), "\n")
