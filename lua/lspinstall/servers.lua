@@ -26,6 +26,7 @@ local servers = {
   ["php"] = require'lspinstall/servers/php',
   ["purescript"] = require'lspinstall/servers/purescript',
   ["python"] = require'lspinstall/servers/python',
+  ["r"] = require'lspinstall/servers/r',
   ["rome"] = require'lspinstall/servers/rome',
   ["ruby"] = require'lspinstall/servers/ruby',
   ["rust"] = require'lspinstall/servers/rust',
