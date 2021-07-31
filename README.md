@@ -84,6 +84,7 @@ end
 | php         | intelephense                                                                |
 | purescript  | purescript-language-server                                                  |
 | python      | pyright-langserver                                                          |
+| r           | r-language-server                                                           |
 | ruby        | solargraph                                                                  |
 | rust        | rust-analyzer                                                               |
 | svelte      | svelte-language-server                                                      |
