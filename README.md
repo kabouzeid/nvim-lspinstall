@@ -140,7 +140,7 @@ Note: **don't** replace the `/` with a `.` in the `require` calls above ([see he
 * `require'lspinstall'.installed_servers()`
 
 * `require'lspinstall'.install_server(<lang>)`
-* `require'lspinstall'.post_install_hook`
+* `require'lspinstall'.post_install_hook(<jid>)`
 
 * `require'lspinstall'.uninstall_server(<lang>)`
 * `require'lspinstall'.post_uninstall_hook`
