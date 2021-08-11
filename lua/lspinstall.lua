@@ -13,7 +13,10 @@ function M.install_server(lang)
   vim.fn.mkdir(path, "p") -- fail: throws
 
   local function onExit(_, code)
-    if code ~= 0 then error("[nvim-lspinstall] Could not install language server for " .. lang) end
+    if code ~= 0 then
+			vim.fn.delete(path, "rf")
+			error("[nvim-lspinstall] Could not install language server for " .. lang)
+		end
     vim.notify("[nvim-lspinstall] Successfully installed language server for " .. lang)
     if M.post_install_hook then M.post_install_hook() end
   end
