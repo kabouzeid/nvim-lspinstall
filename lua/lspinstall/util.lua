@@ -35,7 +35,7 @@ end
 --- Check if on Windows or not
 --@returns true if it is windows os, false otherwise
 function M.is_windows()
-  if vim.fn.has('win32') then
+  if vim.fn.has('win32') == 1 then
     return true
   end
   return false
@@ -46,7 +46,7 @@ end
 function M.do_term_open(terminal_task,term_options)
   vim.cmd("new")
   local shell = vim.o.shell
-  if M.is_windows() ==false then
+  if M.is_windows() == false then
     vim.o.shell='/bin/bash'
   else
     vim.o.shell='cmd.exe'
