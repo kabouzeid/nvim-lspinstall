@@ -6,7 +6,7 @@ return {
   unzip tailwindcss-intellisense.vsix -d tailwindcss-intellisense
   rm tailwindcss-intellisense.vsix
 
-  echo "#!/usr/bin/env bash" > tailwindcss-intellisense.sh
+  echo "#\!/usr/bin/env bash" > tailwindcss-intellisense.sh
   echo "node \$(dirname \$0)/tailwindcss-intellisense/extension/dist/server/tailwindServer.js \$*" >> tailwindcss-intellisense.sh
 
   chmod +x tailwindcss-intellisense.sh
