@@ -21,10 +21,43 @@ function M.extract_config(name)
   return vim.deepcopy(config)
 end
 
+--- Prints message with warning highlights
+function M.print_warning(msg)
+  vim.api.nvim_echo({{msg,"WarningMsg"}},true,{})
+end
+
 --- Gets lsp server install directory
 --@returns string
 function M.install_path(lang)
   return vim.fn.stdpath("data") .. "/lspinstall/" .. lang
+end
+
+--- Check if on Windows or not
+--@returns true if it is windows os, false otherwise
+function M.is_windows()
+  if vim.fn.has('win32') == 1 then
+    return true
+  end
+  return false
+end
+
+--- Sets the shell to be used as bash, if not on windows
+-- or OS is linux/mac, cmd.exe if on windows while executing the command
+function M.do_term_open(terminal_task,term_options)
+  vim.cmd("new")
+  local shell = vim.o.shell
+  if M.is_windows() == false then
+    vim.o.shell='/bin/bash'
+  else
+    vim.o.shell='cmd.exe'
+  end
+  if M.is_windows() == true then
+    vim.fn.termopen(terminal_task,term_options)
+  else
+    vim.fn.termopen("set -e\n" .. terminal_task,term_options)
+  end
+  vim.o.shell = shell
+  vim.cmd("startinsert")
 end
 
 return M
