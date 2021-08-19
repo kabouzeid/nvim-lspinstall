@@ -70,7 +70,7 @@ end
 | dockerfile  | docker-langserver                                                           |
 | elixir      | Elixir Language Server (elixir-ls)                                          |
 | elm         | Elm Language Server (elm-ls)                                                |
-| ember       | Ember Language Server                                                |
+| ember       | Ember Language Server                                                       |
 | fortran     | Fortran Language Server (fortls)                                            |
 | go          | gopls                                                                       |
 | graphql     | GraphQL language service                                                    |
@@ -82,6 +82,7 @@ end
 | latex       | texlab                                                                      |
 | lua         | (sumneko) lua-language-server                                               |
 | php         | intelephense                                                                |
+| puppet      | puppet-editor-services                                                      |
 | purescript  | purescript-language-server                                                  |
 | python      | pyright-langserver                                                          |
 | ruby        | solargraph                                                                  |

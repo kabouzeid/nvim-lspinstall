@@ -9,7 +9,7 @@ if lsp_util.is_windows() then
 else
   cmd_to_use = { "node", "./tailwindcss-intellisense/extension/dist/server/tailwindServer.js", "--stdio" }
   script_to_use  = [[
-  curl -L -o tailwindcss-intellisense.vsix https://github.com/tailwindlabs/tailwindcss-intellisense/releases/download/v0.6.8/vscode-tailwindcss-0.6.8.vsix
+  curl -L -o tailwindcss-intellisense.vsix $(curl -s https://api.github.com/repos/tailwindlabs/tailwindcss-intellisense/releases/latest | grep 'browser_' | cut -d\" -f4)
   rm -rf tailwindcss-intellisense
   unzip tailwindcss-intellisense.vsix -d tailwindcss-intellisense
   rm tailwindcss-intellisense.vsix
