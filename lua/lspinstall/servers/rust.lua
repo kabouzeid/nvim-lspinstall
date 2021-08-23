@@ -26,7 +26,7 @@ return vim.tbl_extend('error', config, {
 
     mv rust-analyzer-$mchn-$platform rust-analyzer
   else
-    ln "$PREFIX/bin/rust-analyzer" rust-analyzer
+    ln -s "$PREFIX/bin/rust-analyzer" rust-analyzer
   fi
 
   chmod +x rust-analyzer
