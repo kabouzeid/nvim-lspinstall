@@ -20,6 +20,7 @@ local servers = {
   ["html"] = require'lspinstall/servers/html',
   ["java"] = require'lspinstall/servers/java',
   ["json"] = require'lspinstall/servers/json',
+  ["julia"] = require'lspinstall/servers/julia',
   ["kotlin"] = require'lspinstall/servers/kotlin',
   ["latex"] = require'lspinstall/servers/latex',
   ["lua"] = require'lspinstall/servers/lua',
