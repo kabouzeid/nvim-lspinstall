@@ -78,6 +78,7 @@ end
 | html        | html-language-features (pulled directly from the latest VSCode release)     |
 | java        | Eclipse JDTLS with Lombok                                                   |
 | json        | json-language-features (pulled directly from the latest VSCode release)     |
+| julia       | LanguageServer.jl                                                           |
 | kotlin      | kotlin-language-server                                                      |
 | latex       | texlab                                                                      |
 | lua         | (sumneko) lua-language-server                                               |
