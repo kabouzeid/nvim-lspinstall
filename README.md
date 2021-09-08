@@ -92,6 +92,7 @@ end
 | terraform   | Terraform Language Server (terraform-ls)                                    |
 | typescript  | typescript-language-server                                                  |
 | vim         | vim-language-server                                                         |
+| volar       | volar-server (for Vue)
 | vue         | vls (vetur)                                                                 |
 | yaml        | yaml-language-server                                                        |
 
