@@ -6,6 +6,14 @@ local M = {}
 
 -- INSTALL
 
+local function parse_config(config)
+  -- if config is a string then interpret it as a lua module and require it
+  if type(config) == 'string' then
+    return require(config)
+  end
+  return config
+end
+
 function M.install_server(lang)
   if not servers[lang] then error("Could not find language server for " .. lang) end
 
@@ -26,7 +34,8 @@ function M.install_server(lang)
   vim.cmd("new")
   local shell = vim.o.shell
   vim.o.shell = "/usr/bin/env bash"
-  vim.fn.termopen("set -e\n" .. servers[lang].install_script, { cwd = path, on_exit = onExit })
+  local install_script = parse_config(servers[lang]).install_script
+  vim.fn.termopen("set -e\n" .. install_script, { cwd = path, on_exit = onExit })
   vim.o.shell = shell
   vim.cmd("startinsert")
 end
@@ -54,8 +63,8 @@ function M.uninstall_server(lang)
   vim.cmd("new")
   local shell = vim.o.shell
   vim.o.shell = "/usr/bin/env bash"
-  vim.fn.termopen("set -e\n" .. (servers[lang].uninstall_script or ""),
-                  { cwd = path, on_exit = onExit })
+  local uninstall_script =  parse_config(servers[lang]).uninstall_script or ""
+  vim.fn.termopen("set -e\n" .. uninstall_script, { cwd = path, on_exit = onExit })
   vim.o.shell = shell
   vim.cmd("startinsert")
 end
@@ -81,6 +90,7 @@ end
 function M.setup()
   for lang, server_config in pairs(servers) do
     if M.is_server_installed(lang) and not configs[lang] then -- don't overwrite existing config, leads to problems
+      server_config = parse_config(server_config)
       local config = vim.tbl_deep_extend("keep", server_config,
                                          { default_config = { cmd_cwd = install_path(lang) } })
       if config.default_config.cmd then
