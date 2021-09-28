@@ -83,7 +83,7 @@ return {
     curl -L -o - http://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz | tar xvz
     curl -L -o lombok.jar https://projectlombok.org/downloads/lombok.jar
 
-cat << EOF > jdtls.sh
+cat <<EOF > jdtls.sh
 #!/usr/bin/env bash
 
 WORKSPACE="\$1"
