@@ -82,6 +82,7 @@ end
 | latex       | texlab                                                                      |
 | lua         | (sumneko) lua-language-server                                               |
 | php         | intelephense                                                                |
+| prisma      | prisma-language-server                                                      |
 | puppet      | puppet-editor-services                                                      |
 | purescript  | purescript-language-server                                                  |
 | python      | pyright-langserver                                                          |
