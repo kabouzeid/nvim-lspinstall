@@ -8,7 +8,7 @@ require'lspinstall/servers'.bash = vim.tbl_extend('error', config, {
   -- lspinstall will automatically create/delete the install directory for every server
   install_script = [[
 
-    curl -L -o https://github.com/eclipse/lemminx/archive/refs/tags/0.18.0.tar.gz
+    curl -fLO https://github.com/eclipse/lemminx/archive/refs/tags/0.18.0.tar.gz
     tar xzvf *.tar.gz
     rm *.tar.gz
 
