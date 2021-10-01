@@ -8,9 +8,23 @@ require'lspinstall/servers'.bash = vim.tbl_extend('error', config, {
   -- lspinstall will automatically create/delete the install directory for every server
   install_script = [[
 
-    curl -fLO https://github.com/eclipse/lemminx/archive/refs/tags/0.18.0.tar.gz
-    tar xzvf *.tar.gz
-    rm *.tar.gz
+  os=$(uname -s | tr "[:upper:]" "[:lower:]")
+
+  case $os in
+
+  darwin)
+  curl -fLO https://download.jboss.org/jbosstools/vscode/stable/lemminx-binary/0.18.0-400/lemminx-osx-x86_64.zip
+  unzip lemminx-osx-x86_64.zip
+  rm -r lemminx-osx-x86_64.zip
+  ;;
+
+  linux)
+  curl -fLO https://download.jboss.org/jbosstools/vscode/stable/lemminx-binary/0.18.0-400/lemminx-linux.zip
+  unzip lemminx-linux.zip
+  rm -r lemminx-linux.zip
+  ;;
+
+  esac
 
   ]]
 })
