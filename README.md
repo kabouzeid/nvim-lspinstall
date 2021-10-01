@@ -80,6 +80,7 @@ end
 | json        | json-language-features (pulled directly from the latest VSCode release)     |
 | kotlin      | kotlin-language-server                                                      |
 | latex       | texlab                                                                      |
+| lemminx     | xml language server                                                         |
 | lua         | (sumneko) lua-language-server                                               |
 | php         | intelephense                                                                |
 | prisma      | prisma-language-server                                                      |
