@@ -4,7 +4,7 @@ local config = require"lspinstall/util".extract_config("lemminx")
 config.default_config.cmd[1] = "./lemminx"
 
 -- 3. extend the config with an install_script and (optionally) uninstall_script
-require'lspinstall/servers'.bash = vim.tbl_extend('error', config, {
+require'lspinstall/servers'.lemminx = vim.tbl_extend('error', config, {
   -- lspinstall will automatically create/delete the install directory for every server
   install_script = [[
 
