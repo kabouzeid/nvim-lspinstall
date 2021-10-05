@@ -17,18 +17,18 @@ return vim.tbl_extend('error', config, {
     npm install typescript-language-server@latest typescript@latest
   }
 
-  if [ ! -x $NPM ] && [ ! -x $YARN ]; then
+  if [ ! -x "$NPM" ] && [ ! -x "$YARN" ]; then
     # if npm and yarn are not on the system
     printf "\nCan't find npm or yarn on the system\n"
-  elif [ -x $NPM ] && [ -x $YARN ]; then
+  elif [ -x "$NPM" ] && [ -x "$YARN" ]; then
     # if npm and yarn are on the system
     printf "\nFound npm & yarn ... using yarn\n"
     Yarn
-  elif [ ! -x $NPM ]; then
+  elif [ ! -x "$NPM" ]; then
     # if npm is not on the system
     printf "\nNpm not found..."
     Yarn
-  elif [ ! -x $YARN ]; then
+  elif [ ! -x "$YARN" ]; then
     # if yarn is not on the system
     printf "\nYarn not found..."
     Npm
