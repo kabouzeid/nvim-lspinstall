@@ -14,7 +14,7 @@ return vim.tbl_extend('error', config, {
 
   Npm() {
     ! test -f package.json && npm init -y  || true
-    npm install yaml-language-server@latest --ignore-engines
+    npm install yaml-language-server@latest
   }
 
   if [ ! -x "$NPM" ] && [ ! -x "$YARN" ]; then
