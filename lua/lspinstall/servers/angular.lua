@@ -14,7 +14,7 @@ return vim.tbl_extend('error', config, {
 
   Npm() {
     ! test -f package.json && npm init -y --scope=lspinstall || true
-    npm install @angular/language-server
+    npm install @angular/language-server@latest
   }
 
   if [ ! -x "$NPM" ] && [ ! -x "$YARN" ]; then
