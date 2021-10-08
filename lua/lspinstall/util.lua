@@ -28,7 +28,7 @@ function M.install_path(lang)
 end
 
 -- Gets yarn or node from system (default: yarn, fallback: npm)
---@returns yarn/npm install script
+--@return string yarn/npm install script
 function M.get_node_install_script(pkg_name)
     return string.format([[
     if command -v yarn 2>/dev/null; then
