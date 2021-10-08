@@ -27,4 +27,22 @@ function M.install_path(lang)
   return vim.fn.stdpath("data") .. "/lspinstall/" .. lang
 end
 
+-- Gets yarn or node from system (default: yarn, fallback: npm)
+--@returns yarn/npm install script
+function M.get_node_install_script(pkg_name)
+    return string.format([[
+    if command -v yarn 2>/dev/null; then
+      # yarn was found
+      printf "\nfound yarn\n"
+      ! test -f package.json && yarn init -y --scope=lspinstall || true
+      yarn add %s --ignore-engines
+    else
+      # yarn was not found
+      printf "\ncannot find yarn\n"
+      ! test -f package.json && npm init -y --scope=lspinstall || true
+      npm install %s
+    fi
+    ]], pkg_name, pkg_name)
+end
+
 return M
