@@ -10,19 +10,5 @@ config.default_config.on_new_config = function(new_config, new_root_dir)
 end
 
 return vim.tbl_extend('error', config, {
-  install_script = [[
-
-  if command -v yarn 2>/dev/null; then
-    # yarn was found
-    printf "\nfound yarn\n"
-    ! test -f package.json && yarn init -y --scope=lspinstall || true
-    yarn add graphql-language-service-cli@latest --ignore-engines
-  else
-    # yarn was not found
-    printf "\ncannot find yarn\n"
-    ! test -f package.json && npm init -y --scope=lspinstall || true
-    npm install graphql-language-service-cli@latest
-  fi
-
-  ]]
+  install_script = require"lspinstall/util".get_node_install_script("graphql-language-service-cli@latest")
 })

@@ -2,19 +2,5 @@ local config = require"lspinstall/util".extract_config("rome")
 config.default_config.cmd[1] = "./node_modules/.bin/rome"
 
 return vim.tbl_extend('error', config, {
-  install_script = [[
-
-  if command -v yarn 2>/dev/null; then
-    # yarn was found
-    printf "\nfound yarn\n"
-    ! test -f package.json && yarn init -y --scope=lspinstall || true
-    yarn add rome@latest --ignore-engines
-  else
-    # yarn was not found
-    printf "\ncannot find yarn\n"
-    ! test -f package.json && npm init -y --scope=lspinstall || true
-    npm install rome@latest
-  fi
-
-  ]]
+  install_script = require"lspinstall/util".get_node_install_script("rome@latest")
 })

@@ -15,20 +15,7 @@ config.default_config.init_options.elmTestPath = nil
 --  elmTestPath = require'lspinstall/util'.install_path('elm') .. "/node_modules/.bin/elm-test"
 -- }
 -- ```
+
 return vim.tbl_extend('error', config, {
-  install_script = [[
-
-  if command -v yarn 2>/dev/null; then
-    # yarn was found
-    printf "\nfound yarn\n"
-    ! test -f package.json && yarn init -y --scope=lspinstall || true
-    yarn add elm@latest elm-test@latest elm-format@latest @elm-tooling/elm-language-server@latest --ignore-engines
-  else
-    # yarn was not found
-    printf "\ncannot find yarn\n"
-    ! test -f package.json && npm init -y --scope=lspinstall || true
-    npm install elm@latest elm-test@latest elm-format@latest @elm-tooling/elm-language-server@latest
-  fi
-
-  ]]
+  install_script = require"lspinstall/util".get_node_install_script("elm@latest elm-test@latest elm-format@latest @elm-tooling/elm-language-server@latest")
 })
