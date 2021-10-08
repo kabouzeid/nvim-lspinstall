@@ -4,34 +4,16 @@ config.default_config.cmd[1] = "./node_modules/.bin/vls"
 return vim.tbl_extend('error', config, {
   install_script = [[
 
-  YARN=/usr/bin/yarn
-  NPM=/usr/bin/npm
-
-  Yarn() {
+  if command -v yarn 2>/dev/null; then
+    # yarn was found
+    printf "\nfound yarn\n"
     ! test -f package.json && yarn init -y --scope=lspinstall || true
     yarn add vls@latest --ignore-engines
-  }
-
-  Npm() {
+  else
+    # yarn was not found
+    printf "\ncannot find yarn\n"
     ! test -f package.json && npm init -y --scope=lspinstall || true
     npm install vls@latest
-  }
-
-  if [ ! -x "$NPM" ] && [ ! -x "$YARN" ]; then
-    # if npm and yarn are not on the system
-    printf "\nCan't find npm or yarn on the system\n"
-  elif [ -x "$NPM" ] && [ -x "$YARN" ]; then
-    # if npm and yarn are on the system
-    printf "\nFound npm & yarn ... using yarn\n"
-    Yarn
-  elif [ ! -x "$NPM" ]; then
-    # if npm is not on the system
-    printf "\nNpm not found..."
-    Yarn
-  elif [ ! -x "$YARN" ]; then
-    # if yarn is not on the system
-    printf "\nYarn not found..."
-    Npm
   fi
 
   ]]
