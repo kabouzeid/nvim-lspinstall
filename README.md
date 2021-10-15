@@ -1,3 +1,5 @@
+> :warning: I don't have time to maintain this repository. Please use https://github.com/williamboman/nvim-lsp-installer instead, it does the same thing but better.
+
 ![logo](/logo.png)
 
 ## About
