@@ -88,6 +88,7 @@ end
 | puppet      | puppet-editor-services                                                      |
 | purescript  | purescript-language-server                                                  |
 | python      | pyright-langserver                                                          |
+| rescript    | rescriptls                                                                  |
 | ruby        | solargraph                                                                  |
 | rust        | rust-analyzer                                                               |
 | svelte      | svelte-language-server                                                      |

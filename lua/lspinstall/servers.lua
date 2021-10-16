@@ -28,6 +28,7 @@ local servers = {
   ["puppet"] = require'lspinstall/servers/puppet',
   ["purescript"] = require'lspinstall/servers/purescript',
   ["python"] = require'lspinstall/servers/python',
+  ["rescript"] = require'lspinstall/servers/rescript',
   ["rome"] = require'lspinstall/servers/rome',
   ["ruby"] = require'lspinstall/servers/ruby',
   ["rust"] = require'lspinstall/servers/rust',
