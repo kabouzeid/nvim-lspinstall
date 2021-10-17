@@ -36,6 +36,7 @@ local servers = {
   ["terraform"] = require'lspinstall/servers/terraform',
   ["typescript"] = require'lspinstall/servers/typescript',
   ["vim"] = require'lspinstall/servers/vim',
+  ["volar"] = require'lspinstall/servers/volar',
   ["vue"] = require'lspinstall/servers/vue',
   ["yaml"] = require'lspinstall/servers/yaml',
   ["zig"] = require'lspinstall/servers/zig',
