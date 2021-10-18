@@ -12,13 +12,18 @@ return vim.tbl_extend('error', config, {
   fi
 
   case $os in
-  linux)
-  platform="unknown-linux-gnu"
-  ;;
-  darwin)
-  platform="apple-darwin"
-  ;;
+    linux)
+      libc="musl"
+      if [ -z $(ldd /bin/ls | grep 'musl' | head -1 | cut -d ' ' -f1) ]; then
+        libc="gnu"
+      fi
+      platform="unknown-linux-${libc}"
+      ;;
+    darwin)
+      platform="apple-darwin"
+      ;;
   esac
+
 
   curl -L -o "rust-analyzer-$mchn-$platform.gz" "https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-$mchn-$platform.gz"
   gzip -d rust-analyzer-$mchn-$platform.gz
