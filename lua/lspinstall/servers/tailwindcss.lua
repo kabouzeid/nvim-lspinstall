@@ -4,6 +4,6 @@ config.default_config.cmd[1] = "./node_modules/.bin/tailwindcss-language-server"
 return vim.tbl_extend('error', config, {
   install_script = [[
   ! test -f package.json && npm init -y --scope=lspinstall || true
-  npm install @tailwindcss/language-server
+  npm install @tailwindcss/language-server@latest
   ]]
 })
