@@ -22,6 +22,7 @@ local servers = {
   ["json"] = require'lspinstall/servers/json',
   ["kotlin"] = require'lspinstall/servers/kotlin',
   ["latex"] = require'lspinstall/servers/latex',
+  ["lemminx"] = require'lspinstall/servers/lemminx',
   ["lua"] = require'lspinstall/servers/lua',
   ["php"] = require'lspinstall/servers/php',
   ["prismals"] = require'lspinstall/servers/prismals',
