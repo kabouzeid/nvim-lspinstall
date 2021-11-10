@@ -69,6 +69,7 @@ end
 | cpp         | clangd                                                                      |
 | csharp      | OmniSharp                                                                   |
 | css         | css-language-features (pulled directly from the latest VSCode release)      |
+| dlang       | serve-d                                                          |
 | dockerfile  | docker-langserver                                                           |
 | elixir      | Elixir Language Server (elixir-ls)                                          |
 | elm         | Elm Language Server (elm-ls)                                                |

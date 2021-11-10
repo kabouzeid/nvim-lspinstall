@@ -8,6 +8,7 @@ local servers = {
   ["css"] = require'lspinstall/servers/css',
   ["deno"] = require'lspinstall/servers/deno',
   ["diagnosticls"] = require'lspinstall/servers/diagnosticls',
+  ["dlang"] = require'lspinstall/servers/dlang',
   ["dockerfile"] = require'lspinstall/servers/dockerfile',
   ["efm"] = require'lspinstall/servers/efm',
   ["elixir"] = require'lspinstall/servers/elixir',
